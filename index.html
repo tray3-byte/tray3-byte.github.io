@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tray Lowery — Content Strategist &amp; Web Specialist</title>
+  <title>Tray Lowery — Web &amp; Content Strategist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -772,6 +772,19 @@
     .social-sub-stats { font-family: var(--font-mono); font-size: .58rem; letter-spacing: .04em; color: var(--muted); margin-bottom: 1rem; line-height: 1.5; }
     .social-card-footer { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; padding-top: .9rem; border-top: 1px solid var(--border); margin-top: auto; }
 
+    /* ─── POST COPY SHOWCASE ─────────────────────────────────────── */
+    .post-copy-area { margin-bottom: 1.1rem; flex: 1; }
+    .post-copy-text {
+      font-size: .82rem; color: var(--muted2); line-height: 1.75;
+      margin-bottom: .75rem;
+      display: -webkit-box; -webkit-line-clamp: 6;
+      -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .post-tags {
+      font-family: var(--font-mono); font-size: .58rem;
+      letter-spacing: .04em; color: var(--cyan); opacity: .7; line-height: 1.8;
+    }
+
     /* ─── SOCIAL CARD INLINE CAROUSEL ───────────────────────────── */
     .sc-track { position: relative; width: 100%; height: 100%; overflow: hidden; }
     .sc-slides-wrap { display: flex; width: 100%; height: 100%; transition: transform .4s var(--ease); }
@@ -847,12 +860,12 @@
           <span class="line2">Content Strategist &amp; Web Specialist</span>
         </h1>
         <p class="hero-sub">
-          I've spent a majority of the last decade in marketing and communications figuring out how to get the right messages and information to the right people. <strong>Across that time, I've learned that good content isn't just well-written. It's well-placed, well-timed and created with purpose.</strong>
+          I've spent nearly a decade in marketing and communications figuring out how to get the right messages and information to the right people. <strong>Across that time, I've learned that good content isn't just well-written. It's well-placed, well-timed and created with purpose.</strong>
         </p>
         <div class="hero-actions">
           <a href="your-resume.pdf" download class="btn-primary">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-            Download Resume
+            View My Resume
           </a>
         </div>
       </div>
@@ -892,7 +905,7 @@
     <div class="container">
       <div class="work-intro reveal">
         <div class="section-label">My Work</div>
-        <h2 class="work-intro-title">Some things I've built,<br>written &amp; worked on</h2>
+        <h2 class="work-intro-title">Projects <br>written &amp; worked on</h2>
         <p class="work-intro-sub">Behind each initiative is a story — and a strategy. Here's a cross-section of the campaigns, content and projects I've developed, managed and measured across storytelling, media relations and digital campaign performance.</p>
       </div>
     </div>
@@ -1156,13 +1169,10 @@
           <!-- FOX5: Snakebite -->
           <div class="media-card">
             <div class="media-thumb">
-              <div class="media-news-bg">
-                <div class="media-news-logo">FOX<span>5</span> Atlanta</div>
-                <div class="media-news-badge">Broadcast News Coverage</div>
+              <div class="social-img-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="3"/></svg>
+                <span>Add Coverage Photo</span>
               </div>
-              <a href="https://www.fox5atlanta.com/news/georgia-woman-hospitalized-after-venomous-snakebite-villa-rica-walmart-parking-lot" target="_blank" rel="noopener" class="media-play-btn" title="Watch Story on Fox5">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              </a>
             </div>
             <div class="media-body">
               <div class="media-outlet">Fox5 Atlanta · Broadcast Feature</div>
@@ -1185,13 +1195,10 @@
           <!-- FOX5: IV Fluid Shortage -->
           <div class="media-card">
             <div class="media-thumb">
-              <div class="media-news-bg">
-                <div class="media-news-logo">FOX<span>5</span> Atlanta</div>
-                <div class="media-news-badge">Broadcast News Coverage</div>
+              <div class="social-img-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="3"/></svg>
+                <span>Add Coverage Photo</span>
               </div>
-              <a href="https://www.fox5atlanta.com/news/georgia-hospitals-rationing-iv-fluid-amid-shortage-feds-stepping" target="_blank" rel="noopener" class="media-play-btn" title="Watch Story on Fox5">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-              </a>
             </div>
             <div class="media-body">
               <div class="media-outlet">Fox5 Atlanta · Broadcast Feature</div>
@@ -1214,13 +1221,11 @@
           <!-- ABRIDGE: AI Campaign + YouTube -->
           <div class="media-card">
               <div class="media-thumb">
-                <iframe
-                  src="https://www.youtube.com/embed/R_LotL-nB-Q"
-                  title="Tanner Health + Abridge AI Campaign"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                  loading="lazy">
-                </iframe>
+                <div class="social-img-placeholder">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  <span>Add Campaign Image</span>
+                </div>
+                <span class="card-type-badge">AI · Press Release</span>
               </div>
               <div class="media-body">
                 <div class="media-outlet">Abridge · Press Release &amp; Campaign Video</div>
@@ -1282,19 +1287,19 @@
               <div class="social-card-title">Connect Your Family's Accounts in Tanner MyChart</div>
               <div class="social-metrics-strip">
                 <div class="sm-metric">
-                  <div class="sm-val cyan">823</div>
+                  <div class="sm-val cyan">783</div>
                   <div class="sm-label">Link Clicks</div>
                 </div>
                 <div class="sm-metric">
-                  <div class="sm-val">$0.29</div>
-                  <div class="sm-label">Cost / Click</div>
+                  <div class="sm-val" style="color:var(--muted);font-size:.85rem;">[ — ]</div>
+                  <div class="sm-label">Engagements</div>
                 </div>
                 <div class="sm-metric">
-                  <div class="sm-val amber">$236</div>
-                  <div class="sm-label">Spent</div>
+                  <div class="sm-val" style="color:var(--muted);font-size:.85rem;">[ — ]</div>
+                  <div class="sm-label">Views</div>
                 </div>
               </div>
-              <div class="social-sub-stats">29,312 People Reached · 54,188 Impressions · Best of 2 ad posts</div>
+              <div class="social-sub-stats">July 2025 · Traffic Campaign · tanner.org/the-scope</div>
               <div class="social-card-footer">
                 <a href="https://www.tanner.org/the-scope/connect-your-familys-accounts-in-tanner-mychart" class="card-link" target="_blank" rel="noopener">
                   Read Blog
@@ -1330,15 +1335,15 @@
                   <div class="sm-label">Link Clicks</div>
                 </div>
                 <div class="sm-metric">
-                  <div class="sm-val">$0.31</div>
-                  <div class="sm-label">Cost / Click</div>
+                  <div class="sm-val green">2,814</div>
+                  <div class="sm-label">Post Engagements</div>
                 </div>
                 <div class="sm-metric">
-                  <div class="sm-val amber">$851</div>
-                  <div class="sm-label">Spent</div>
+                  <div class="sm-val">179,154</div>
+                  <div class="sm-label">Views</div>
                 </div>
               </div>
-              <div class="social-sub-stats">179,154 Views · 2,814 Post Engagements · 15 days</div>
+              <div class="social-sub-stats">60,171 Viewers · 15 days</div>
               <div class="social-card-footer">
                 <a href="https://www.tanner.org/the-scope/View-Test-Results-Instantly-in-Tanner-MyChart" class="card-link" target="_blank" rel="noopener">
                   Read Blog
@@ -1375,11 +1380,11 @@
                   <div class="sm-label">Landing Page Views</div>
                 </div>
                 <div class="sm-metric">
-                  <div class="sm-val amber">$849</div>
-                  <div class="sm-label">Spent</div>
+                  <div class="sm-val">1,188</div>
+                  <div class="sm-label">Post Engagements</div>
                 </div>
               </div>
-              <div class="social-sub-stats">101,204 Views · 1,188 Engagements · $1.30/LPV · 14 days</div>
+              <div class="social-sub-stats">101,204 Views · 14 days</div>
               <div class="social-card-footer">
                 <a href="https://www.tanner.org/the-scope/Tanner-MyChart-Makes-Managing-a-Loved-Ones-Healthcare-Easy" class="card-link" target="_blank" rel="noopener">
                   Read Blog
@@ -1407,15 +1412,15 @@
                   <div class="sm-label">ThruPlays</div>
                 </div>
                 <div class="sm-metric">
-                  <div class="sm-val">$0.025</div>
-                  <div class="sm-label">Cost / Play</div>
+                  <div class="sm-val">23,626</div>
+                  <div class="sm-label">People Reached</div>
                 </div>
                 <div class="sm-metric">
-                  <div class="sm-val amber">$847</div>
-                  <div class="sm-label">Spent</div>
+                  <div class="sm-val">89,760</div>
+                  <div class="sm-label">Impressions</div>
                 </div>
               </div>
-              <div class="social-sub-stats">23,626 People Reached · 89,760 Impressions · Feb 13–27, 2026</div>
+              <div class="social-sub-stats">Feb 13–27, 2026 · Video Engagement Campaign</div>
               <div class="social-card-footer">
                 <a href="https://www.facebook.com/share/v/1LazwawFqQ/" class="card-link" target="_blank" rel="noopener">
                   View Video 1
@@ -1471,23 +1476,26 @@
               <span class="card-type-badge">Paid Social</span>
             </div>
             <div class="social-card-body">
-              <div class="social-campaign-label">MyChart Campaign — Update Title</div>
-              <div class="social-card-title">Tanner MyChart Campaign Post</div>
+              <div class="social-campaign-label">MyChart Campaign · Virtual Care · Paid Social</div>
+              <div class="social-card-title">Tanner MyChart Brings the Doctor's Office to Your Living Room</div>
+              <div class="post-copy-area">
+                <p class="post-copy-text">Tanner MyChart brings the doctor's office to your living room so your family can get virtual care when you need it, without even leaving your couch. Learn more and sign up for your free account at TannerMyChart.org.</p>
+                <div class="post-tags">#TannerMyChart &nbsp; #TannerHealth &nbsp; #TannerMedicalGroup</div>
+              </div>
               <div class="social-metrics-strip">
                 <div class="sm-metric">
-                  <div class="sm-val" style="color:var(--muted);font-size:.85rem;">[ — ]</div>
+                  <div class="sm-val cyan">823</div>
                   <div class="sm-label">Link Clicks</div>
                 </div>
                 <div class="sm-metric">
-                  <div class="sm-val" style="color:var(--muted);font-size:.85rem;">[ — ]</div>
-                  <div class="sm-label">Cost / Click</div>
+                  <div class="sm-val">54,188</div>
+                  <div class="sm-label">Impressions</div>
                 </div>
                 <div class="sm-metric">
-                  <div class="sm-val" style="color:var(--muted);font-size:.85rem;">[ — ]</div>
-                  <div class="sm-label">Spent</div>
+                  <div class="sm-val">29,312</div>
+                  <div class="sm-label">Reached</div>
                 </div>
               </div>
-              <div class="social-sub-stats">Add performance data from Facebook Ads Manager</div>
               <div class="social-card-footer">
                 <a href="https://www.facebook.com/100050155793908/posts/pfbid0HWDi3Hu7GeFtrbX73wQjUuxZQFN5a8to4ZXuVLd87z4mjENdVDo4UUn56ciGC7cQl/" class="card-link" target="_blank" rel="noopener">
                   View Post
