@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -7,32 +6,38 @@
   <title>Tray Lowery — Content Strategist &amp; Web Specialist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700&family=Barlow:ital,wght@0,300;0,400;0,500;1,300&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
-    /* ─── RESET & VARIABLES ─────────────────────────────────────── */
+    /* ─── RESET ─────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── VARIABLES — LIGHTER DARK THEME ────────────────────────── */
     :root {
-      --bg:        #070710;
-      --bg2:       #0d0d1a;
-      --bg3:       #12122a;
-      --surface:   #111127;
-      --border:    rgba(0,229,255,.12);
-      --border2:   rgba(0,229,255,.25);
-      --cyan:      #00e5ff;
-      --cyan2:     #00b8cc;
-      --violet:    #7b3fe4;
-      --violet2:   #a66cf5;
-      --text:      #e0e0f0;
-      --muted:     #7777aa;
-      --white:     #ffffff;
-      --font-disp: 'Syne', sans-serif;
+      --bg:        #07080f;
+      --bg2:       #0c1020;
+      --bg3:       #121827;
+      --surface:   #0f1520;
+      --surface2:  #162030;
+      --border:    rgba(0,200,255,.11);
+      --border2:   rgba(0,200,255,.27);
+      --cyan:      #00c8ff;
+      --cyan2:     #0099cc;
+      --teal:      #00e5b8;
+      --amber:     #fbbf24;
+      --green:     #22d3a8;
+      --text:      #ecf2ff;
+      --muted:     #7282a8;
+      --muted2:    #9aaccc;
+      --white:     #f0f6ff;
+      --font-disp: 'Barlow Condensed', sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
-      --font-body: 'DM Sans', sans-serif;
+      --font-body: 'Barlow', sans-serif;
       --ease:      cubic-bezier(.22,1,.36,1);
       --ease2:     cubic-bezier(.4,0,.2,1);
       --r:         8px;
       --r2:        14px;
     }
+
     html { scroll-behavior: smooth; font-size: 16px; }
     body {
       background: var(--bg);
@@ -46,987 +51,1459 @@
     a { color: inherit; text-decoration: none; }
     img { display: block; width: 100%; }
 
-```
-/* ─── SCROLLBAR ─────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: var(--cyan2); border-radius: 2px; }
+    /* ─── SCROLLBAR ──────────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--cyan2); border-radius: 2px; }
 
-/* ─── NOISE OVERLAY ─────────────────────────────────────────── */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
-  opacity: .025;
-  pointer-events: none;
-  z-index: 9999;
-}
+    /* ─── NOISE OVERLAY ──────────────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: .018;
+      pointer-events: none;
+      z-index: 9999;
+    }
 
-/* ─── GRID BACKGROUND ───────────────────────────────────────── */
-.grid-bg {
-  position: fixed;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0,229,255,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,229,255,.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-  z-index: 0;
-}
+    /* ─── GRID BACKGROUND ────────────────────────────────────────── */
+    .grid-bg {
+      position: fixed; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,200,255,.022) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,200,255,.022) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none; z-index: 0;
+    }
 
-/* ─── SECTION BASE ──────────────────────────────────────────── */
-section {
-  position: relative;
-  z-index: 1;
-}
-.container {
-  max-width: 1160px;
-  margin: 0 auto;
-  padding: 0 clamp(1.5rem, 5vw, 4rem);
-}
-.section-label {
-  font-family: var(--font-mono);
-  font-size: .7rem;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--cyan);
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-}
-.section-label::before {
-  content: '';
-  width: 32px;
-  height: 1px;
-  background: var(--cyan);
-}
+    /* ─── SECTION BASE ───────────────────────────────────────────── */
+    section { position: relative; z-index: 1; }
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 4rem); }
 
-/* ─── HERO ──────────────────────────────────────────────────── */
-#hero {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 6rem 0 5rem;
-}
-.hero-inner {
-  width: 100%;
-  padding-bottom: 6rem;
-}
-.hero-tag {
-  font-family: var(--font-mono);
-  font-size: .72rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--cyan);
-  margin-bottom: 1.5rem;
-  opacity: 0;
-  animation: fadeUp .6s .2s var(--ease) forwards;
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-}
-.hero-tag::before {
-  content: '';
-  width: 24px;
-  height: 1px;
-  background: var(--cyan);
-}
-.hero-name {
-  font-family: var(--font-disp);
-  font-size: clamp(3.2rem, 10vw, 8.5rem);
-  font-weight: 800;
-  line-height: .9;
-  letter-spacing: -.04em;
-  color: var(--white);
-  opacity: 0;
-  animation: fadeUp .7s .35s var(--ease) forwards;
-  margin-bottom: 1.5rem;
-}
-.hero-name .accent { color: var(--cyan); }
-.hero-name .line2 {
-  display: block;
-  -webkit-text-stroke: 1.5px rgba(255,255,255,.25);
-  color: transparent;
-}
-.hero-sub {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  color: var(--muted);
-  max-width: 520px;
-  line-height: 1.7;
-  opacity: 0;
-  animation: fadeUp .7s .5s var(--ease) forwards;
-  margin-bottom: 2.5rem;
-}
-.hero-sub strong { color: var(--text); font-weight: 500; }
-.hero-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeUp .7s .65s var(--ease) forwards;
-}
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: .45rem;
-  padding: .65rem 1.4rem;
-  background: var(--cyan);
-  color: #000;
-  font-family: var(--font-mono);
-  font-size: .72rem;
-  font-weight: 500;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  border-radius: var(--r);
-  transition: background .2s, color .2s;
-}
-.btn-primary:hover {
-  background: var(--cyan2);
-}
-.btn-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: .45rem;
-  padding: .65rem 1.4rem;
-  border: 1px solid var(--border2);
-  color: var(--text);
-  font-family: var(--font-mono);
-  font-size: .72rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  border-radius: var(--r);
-  transition: border-color .2s, color .2s, background .2s;
-}
-.btn-secondary:hover {
-  border-color: var(--cyan);
-  color: var(--cyan);
-  background: rgba(0,229,255,.05);
-}
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: .7rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--cyan); margin-bottom: 1rem;
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .section-label::before { content: ''; width: 32px; height: 1px; background: var(--cyan); }
 
-.scroll-hint {
-  position: absolute;
-  bottom: 1.25rem;
-  left: 50%;
-  transform: translateX(-50%) translateY(0);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: .5rem;
-  opacity: 0;
-  animation: fadeUpHint .6s 1.1s var(--ease) forwards;
-  pointer-events: none;
-}
-@keyframes fadeUpHint {
-  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
-}
-.scroll-hint span {
-  font-family: var(--font-mono);
-  font-size: .6rem;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
-.scroll-line {
-  width: 2px;
-  height: 52px;
-  background: linear-gradient(to bottom, var(--cyan), transparent);
-  animation: scrollPulse 1.8s infinite;
-  border-radius: 2px;
-  box-shadow: 0 0 6px rgba(0,229,255,.6);
-}
-@keyframes scrollPulse {
-  0%,100% { opacity: 1; transform: scaleY(1); }
-  50%      { opacity: .3; transform: scaleY(.6); }
-}
+    /* ─── HERO ───────────────────────────────────────────────────── */
+    #hero { min-height: 100vh; display: flex; align-items: center; padding: 6rem 0 5rem; }
+    .hero-inner { width: 100%; padding-bottom: 6rem; }
+    .hero-tag {
+      font-family: var(--font-mono); font-size: .72rem; letter-spacing: .2em;
+      text-transform: uppercase; color: var(--cyan); margin-bottom: 1.5rem;
+      opacity: 0; animation: fadeUp .6s .2s var(--ease) forwards;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .hero-tag::before { content: ''; width: 24px; height: 1px; background: var(--cyan); }
+    .hero-name {
+      font-family: var(--font-disp);
+      font-size: clamp(3.5rem, 11vw, 9.5rem); font-weight: 900;
+      line-height: 1.0; letter-spacing: -.01em; color: var(--white);
+      opacity: 0; animation: fadeUp .7s .35s var(--ease) forwards; margin-bottom: 1.5rem;
+    }
+    .hero-name .accent { color: var(--cyan); }
+    .hero-name .line2 {
+      display: block;
+      -webkit-text-stroke: 2px rgba(255,255,255,.18);
+      color: transparent;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.25rem); color: var(--muted);
+      max-width: 520px; line-height: 1.7;
+      opacity: 0; animation: fadeUp .7s .5s var(--ease) forwards; margin-bottom: 2.5rem;
+    }
+    .hero-sub strong { color: var(--text); font-weight: 500; }
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      opacity: 0; animation: fadeUp .7s .65s var(--ease) forwards;
+    }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: .45rem;
+      padding: .65rem 1.4rem; background: var(--cyan); color: #000;
+      font-family: var(--font-mono); font-size: .72rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      border-radius: var(--r); transition: background .2s, color .2s;
+    }
+    .btn-primary:hover { background: var(--cyan2); color: #fff; }
+    .scroll-hint {
+      position: absolute; bottom: 1.25rem; left: 50%;
+      transform: translateX(-50%) translateY(0);
+      display: flex; flex-direction: column; align-items: center; gap: .5rem;
+      opacity: 0; animation: fadeUpHint .6s 1.1s var(--ease) forwards; pointer-events: none;
+    }
+    @keyframes fadeUpHint {
+      from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+      to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    }
+    .scroll-hint span { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
+    .scroll-line {
+      width: 2px; height: 52px;
+      background: linear-gradient(to bottom, var(--cyan), transparent);
+      animation: scrollPulse 1.8s infinite; border-radius: 2px;
+      box-shadow: 0 0 6px rgba(0,200,255,.5);
+    }
+    @keyframes scrollPulse {
+      0%,100% { opacity: 1; transform: scaleY(1); }
+      50%      { opacity: .3; transform: scaleY(.6); }
+    }
 
-/* ─── ABOUT STRIP ───────────────────────────────────────────── */
-#about {
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 7rem 0;
-}
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-.about-title {
-  font-family: var(--font-disp);
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -.03em;
-  color: var(--white);
-  margin-bottom: 1.25rem;
-}
-.about-title em {
-  font-style: normal;
-  color: var(--cyan);
-}
-.about-text {
-  color: var(--muted);
-  line-height: 1.8;
-  font-size: .975rem;
-  margin-bottom: 1rem;
-}
-.about-text strong { color: var(--text); font-weight: 500; }
-.services-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: .75rem;
-}
-.service-pill {
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-  padding: .65rem 1rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  font-family: var(--font-mono);
-  font-size: .7rem;
-  letter-spacing: .05em;
-  color: var(--text);
-}
-.service-pill .dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--cyan);
-  flex-shrink: 0;
-}
+    /* ─── ABOUT STATS STRIP ──────────────────────────────────────── */
+    #about {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 4.5rem 0;
+    }
+    .about-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+    .about-stat {
+      text-align: center; padding: 1.75rem 1.25rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r2); transition: border-color .2s, transform .2s;
+    }
+    .about-stat:hover { border-color: var(--border2); transform: translateY(-3px); }
+    .about-stat-num {
+      font-family: var(--font-disp); font-size: 2.6rem; font-weight: 800;
+      color: var(--cyan); line-height: 1; margin-bottom: .5rem;
+    }
+    .about-stat-label {
+      font-family: var(--font-mono); font-size: .6rem;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted2); line-height: 1.5;
+    }
 
-/* ─── WORK SECTION ──────────────────────────────────────────── */
-#work {
-  padding: 7rem 0;
-}
-.work-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.work-title {
-  font-family: var(--font-disp);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 800;
-  letter-spacing: -.035em;
-  color: var(--white);
-  line-height: 1.1;
-  margin-bottom: .5rem;
-}
-.filter-bar {
-  display: flex;
-  gap: .5rem;
-  flex-wrap: wrap;
-}
-.filter-btn {
-  padding: .45rem 1rem;
-  background: transparent;
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  font-family: var(--font-mono);
-  font-size: .68rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  cursor: pointer;
-  transition: all .2s;
-}
-.filter-btn.active,
-.filter-btn:hover {
-  background: var(--cyan);
-  border-color: var(--cyan);
-  color: #000;
-}
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 1.5rem;
-}
-/* ─── PROJECT CARD ── */
-.card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r2);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: border-color .25s, transform .25s var(--ease), box-shadow .25s;
-  opacity: 0;
-  transform: translateY(24px);
-}
-.card.visible {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity .55s var(--ease), transform .55s var(--ease), border-color .25s, box-shadow .25s;
-}
-.card:hover {
-  border-color: var(--border2);
-  transform: translateY(-4px);
-  box-shadow: 0 20px 60px rgba(0,0,0,.5), 0 0 0 1px var(--border2);
-}
-.card-img {
-  position: relative;
-  aspect-ratio: 16/9;
-  overflow: hidden;
-  background: var(--bg3);
-}
-.card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform .5s var(--ease);
-}
-.card:hover .card-img img { transform: scale(1.04); }
-.card-img-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: .75rem;
-  color: var(--muted);
-}
-.card-img-placeholder svg {
-  width: 36px;
-  height: 36px;
-  opacity: .4;
-}
-.card-img-placeholder span {
-  font-family: var(--font-mono);
-  font-size: .65rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  opacity: .4;
-}
-.card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(7,7,16,.7) 0%, transparent 50%);
-  opacity: 0;
-  transition: opacity .25s;
-}
-.card:hover .card-overlay { opacity: 1; }
-.card-type-badge {
-  position: absolute;
-  top: .75rem;
-  left: .75rem;
-  padding: .28rem .7rem;
-  background: rgba(7,7,16,.75);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--border2);
-  border-radius: 100px;
-  font-family: var(--font-mono);
-  font-size: .6rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--cyan);
-}
-.card-body {
-  padding: 1.75rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-.card-title {
-  font-family: var(--font-disp);
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1.3;
-  margin-bottom: .65rem;
-  letter-spacing: -.01em;
-}
-.card-desc {
-  font-size: .875rem;
-  color: var(--muted);
-  line-height: 1.7;
-  flex: 1;
-  margin-bottom: 1.5rem;
-}
-.card-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .4rem;
-  margin-bottom: 1.5rem;
-}
-.tag {
-  padding: .25rem .65rem;
-  background: rgba(0,229,255,.07);
-  border: 1px solid rgba(0,229,255,.15);
-  border-radius: 4px;
-  font-family: var(--font-mono);
-  font-size: .6rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--cyan2);
-}
-.card-footer {
-  display: flex;
-  gap: .75rem;
-  align-items: center;
-  flex-wrap: wrap;
-  padding-top: 1rem;
-  border-top: 1px solid var(--border);
-  margin-top: auto;
-}
-.card-footer .card-link + .card-link::before {
-  content: '·';
-  color: var(--border2);
-  margin-right: .25rem;
-  pointer-events: none;
-}
-.card-link {
-  display: inline-flex;
-  align-items: center;
-  gap: .4rem;
-  font-family: var(--font-mono);
-  font-size: .68rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--cyan);
-  transition: color .2s;
-}
-.card-link:hover { color: var(--cyan2); }
-.card-link svg { width: 12px; height: 12px; flex-shrink: 0; }
+    /* ─── WORK SECTION WRAPPER ───────────────────────────────────── */
+    #work { padding: 7rem 0 0; }
+    .work-intro { margin-bottom: 1rem; }
+    .work-intro-title {
+      font-family: var(--font-disp);
+      font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800;
+      letter-spacing: -.035em; color: var(--white);
+      line-height: 1.1; margin-bottom: .5rem;
+    }
+    .work-intro-sub {
+      font-size: .95rem; color: var(--muted);
+      max-width: 600px; line-height: 1.7; margin-top: .85rem;
+    }
 
-/* ─── RESUME SECTION ────────────────────────────────────────── */
-#resume {
-  padding: 7rem 0;
-  background: var(--bg2);
-  border-top: 1px solid var(--border);
-}
-.resume-header {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-.resume-title {
-  font-family: var(--font-disp);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 800;
-  letter-spacing: -.035em;
-  color: var(--white);
-  margin-bottom: .75rem;
-}
-.resume-sub {
-  font-size: .95rem;
-  color: var(--muted);
-}
-.resume-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  margin-bottom: 4rem;
-}
-.resume-col-title {
-  font-family: var(--font-mono);
-  font-size: .7rem;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-  color: var(--cyan);
-  margin-bottom: 1.75rem;
-  margin-top: 0;
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-}
-.resume-col-title + .resume-col-title,
-.resume-col-title.mt {
-  margin-top: 3rem;
-}
-.resume-col-title::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-/* timeline */
-.timeline { display: flex; flex-direction: column; gap: 0; }
-.tl-item {
-  position: relative;
-  padding-left: 2.25rem;
-  padding-bottom: 2.25rem;
-}
-.tl-item:last-child { padding-bottom: 0; }
-.tl-item::before {
-  content: '';
-  position: absolute;
-  left: 7px;
-  top: 8px;
-  bottom: -8px;
-  width: 1px;
-  background: var(--border);
-}
-.tl-item:last-child::before { display: none; }
-.tl-dot {
-  position: absolute;
-  left: 0;
-  top: 6px;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  border: 2px solid var(--cyan);
-  background: var(--bg);
-  z-index: 1;
-}
-.tl-dot.current {
-  background: var(--cyan);
-  box-shadow: 0 0 12px rgba(0,229,255,.5);
-}
-.tl-year {
-  font-family: var(--font-mono);
-  font-size: .62rem;
-  letter-spacing: .08em;
-  color: var(--cyan);
-  margin-bottom: .25rem;
-}
-.tl-role {
-  font-family: var(--font-disp);
-  font-size: 1rem;
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1.2;
-  margin-bottom: .2rem;
-}
-.tl-company {
-  font-family: var(--font-mono);
-  font-size: .72rem;
-  color: var(--muted);
-  margin-bottom: .5rem;
-}
-.tl-desc {
-  font-size: .85rem;
-  color: var(--muted);
-  line-height: 1.6;
-}
-/* skills grid */
-.skill-category { margin-bottom: 1.75rem; }
-.skill-category-title {
-  font-family: var(--font-mono);
-  font-size: .62rem;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--cyan);
-  margin-bottom: .85rem;
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-}
-.skill-category-title::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--border);
-}
-.skill-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .45rem;
-}
-.skill-pill-item {
-  padding: .38rem .85rem;
-  background: var(--bg3);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  font-size: .78rem;
-  color: var(--text);
-  letter-spacing: .01em;
-}
-/* tools cloud */
-.tools-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .5rem;
-}
-.tool-chip {
-  padding: .38rem .85rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 100px;
-  font-family: var(--font-mono);
-  font-size: .65rem;
-  letter-spacing: .05em;
-  color: var(--muted);
-}
-/* education */
-.edu-card {
-  padding: 1.25rem;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  margin-bottom: .75rem;
-}
-.edu-degree {
-  font-family: var(--font-disp);
-  font-size: .95rem;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: .2rem;
-}
-.edu-school {
-  font-family: var(--font-mono);
-  font-size: .68rem;
-  color: var(--cyan);
-  margin-bottom: .25rem;
-}
-.edu-year {
-  font-family: var(--font-mono);
-  font-size: .62rem;
-  color: var(--muted);
-}
-/* download cta */
-.resume-download {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-}
+    /* Sub-section dividers */
+    .work-subsection {
+      padding: 5rem 0;
+      border-top: 1px solid var(--border);
+      margin-top: 3.5rem;
+    }
+    .subsec-label {
+      font-family: var(--font-mono); font-size: .65rem;
+      letter-spacing: .18em; text-transform: uppercase; color: var(--cyan);
+      margin-bottom: .65rem; display: flex; align-items: center; gap: .6rem;
+    }
+    .subsec-label::before { content: ''; width: 20px; height: 1px; background: var(--cyan); }
+    .subsec-title {
+      font-family: var(--font-disp);
+      font-size: clamp(1.7rem, 4vw, 2.75rem); font-weight: 800;
+      letter-spacing: -.03em; color: var(--white); line-height: 1.1;
+      margin-bottom: .75rem;
+    }
+    .subsec-title em { font-style: normal; color: var(--cyan); }
+    .subsec-desc {
+      font-size: .9rem; color: var(--muted); max-width: 600px; line-height: 1.7;
+      margin-bottom: 2.5rem;
+    }
 
-/* ─── CONTACT STRIP ─────────────────────────────────────────── */
-#contact {
-  padding: 7rem 0;
-  text-align: center;
-}
-.contact-inner {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--r2);
-  padding: 4rem clamp(2rem, 6vw, 6rem);
-  position: relative;
-  overflow: hidden;
-}
-.contact-inner::before {
-  content: '';
-  position: absolute;
-  top: -60px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(0,229,255,.12) 0%, transparent 70%);
-  pointer-events: none;
-}
-.contact-title {
-  font-family: var(--font-disp);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 800;
-  letter-spacing: -.035em;
-  color: var(--white);
-  margin-bottom: .75rem;
-}
-.contact-sub {
-  font-size: 1rem;
-  color: var(--muted);
-  margin-bottom: 2.5rem;
-  max-width: 460px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.contact-links {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-}
-.contact-link-item {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-  font-family: var(--font-mono);
-  font-size: .72rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--muted);
-  transition: color .2s;
-  padding: .6rem 1.1rem;
-  border: 1px solid var(--border);
-  border-radius: var(--r);
-  transition: all .2s;
-}
-.contact-link-item:hover {
-  color: var(--cyan);
-  border-color: var(--border2);
-}
-.contact-link-item svg { width: 14px; height: 14px; }
+    /* ─── PROJECT CARDS ──────────────────────────────────────────── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r2); overflow: hidden; display: flex;
+      flex-direction: column;
+      transition: border-color .25s, transform .25s var(--ease), box-shadow .25s;
+      opacity: 0; transform: translateY(24px);
+    }
+    .card.visible {
+      opacity: 1; transform: translateY(0);
+      transition: opacity .55s var(--ease), transform .55s var(--ease), border-color .25s, box-shadow .25s;
+    }
+    .card:hover {
+      border-color: var(--border2); transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px var(--border2);
+    }
+    .card-img {
+      position: relative; aspect-ratio: 16/9; overflow: hidden; background: var(--bg3);
+    }
+    .card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
+    .card:hover .card-img img { transform: scale(1.04); }
+    .card-img-placeholder {
+      width: 100%; height: 100%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .75rem; color: var(--muted);
+    }
+    .card-img-placeholder svg { width: 36px; height: 36px; opacity: .35; }
+    .card-img-placeholder span {
+      font-family: var(--font-mono); font-size: .65rem;
+      letter-spacing: .1em; text-transform: uppercase; opacity: .35;
+    }
+    .card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,17,23,.72) 0%, transparent 55%);
+      opacity: 0; transition: opacity .25s;
+    }
+    .card:hover .card-overlay { opacity: 1; }
+    .card-type-badge {
+      position: absolute; top: .75rem; left: .75rem;
+      padding: .28rem .7rem; background: rgba(13,17,23,.82);
+      backdrop-filter: blur(8px); border: 1px solid var(--border2);
+      border-radius: 100px; font-family: var(--font-mono);
+      font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan);
+    }
+    .card-body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; }
+    .card-title {
+      font-family: var(--font-disp); font-size: 1.15rem; font-weight: 700;
+      color: var(--white); line-height: 1.3; margin-bottom: .65rem; letter-spacing: -.01em;
+    }
+    .card-desc {
+      font-size: .875rem; color: var(--muted); line-height: 1.7;
+      flex: 1; margin-bottom: 1.5rem;
+    }
+    .card-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.5rem; }
+    .tag {
+      padding: .25rem .65rem;
+      background: rgba(0,200,255,.07); border: 1px solid rgba(0,200,255,.16);
+      border-radius: 4px; font-family: var(--font-mono); font-size: .6rem;
+      letter-spacing: .06em; text-transform: uppercase; color: var(--cyan2);
+    }
+    .card-footer {
+      display: flex; gap: .75rem; align-items: center; flex-wrap: wrap;
+      padding-top: 1rem; border-top: 1px solid var(--border); margin-top: auto;
+    }
+    .card-link {
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-family: var(--font-mono); font-size: .68rem;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--cyan); transition: color .2s;
+    }
+    .card-link:hover { color: var(--cyan2); }
+    .card-link svg { width: 12px; height: 12px; flex-shrink: 0; }
 
-/* ─── FOOTER ────────────────────────────────────────────────── */
-footer {
-  border-top: 1px solid var(--border);
-  padding: 1.75rem 0;
-  position: relative;
-  z-index: 1;
-}
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-.footer-copy {
-  font-family: var(--font-mono);
-  font-size: .65rem;
-  letter-spacing: .06em;
-  color: var(--muted);
-}
-.footer-copy span { color: var(--cyan); }
+    /* ─── PHOTO CAROUSEL MODAL ───────────────────────────────────── */
+    .photo-modal {
+      display: none; position: fixed; inset: 0; z-index: 10000;
+      background: rgba(8,11,18,.96); backdrop-filter: blur(12px);
+      align-items: center; justify-content: center;
+    }
+    .photo-modal.open { display: flex; }
+    .photo-modal-inner {
+      position: relative; max-width: 920px; width: 95%;
+    }
+    .photo-modal-close {
+      position: absolute; top: -2.75rem; right: 0;
+      background: none; border: none; color: var(--muted2);
+      font-family: var(--font-mono); font-size: .7rem; letter-spacing: .1em;
+      text-transform: uppercase; cursor: pointer; padding: .35rem .5rem;
+      display: flex; align-items: center; gap: .4rem; transition: color .2s;
+    }
+    .photo-modal-close:hover { color: var(--white); }
+    .photo-modal-slides {
+      position: relative; aspect-ratio: 16/9;
+      background: var(--bg3); border-radius: var(--r2);
+      overflow: hidden; border: 1px solid var(--border);
+    }
+    .photo-slide { display: none; width: 100%; height: 100%; }
+    .photo-slide.active { display: block; }
+    .photo-slide img { width: 100%; height: 100%; object-fit: contain; background: var(--bg3); }
+    .photo-modal-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(13,17,23,.85); backdrop-filter: blur(6px);
+      border: 1px solid var(--border); color: var(--text);
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all .2s; z-index: 2;
+    }
+    .photo-modal-nav:hover { border-color: var(--cyan); color: var(--cyan); }
+    .photo-modal-nav svg { width: 16px; height: 16px; }
+    .photo-modal-prev { left: .85rem; }
+    .photo-modal-next { right: .85rem; }
+    .photo-modal-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: .85rem; padding: 0 .25rem;
+    }
+    .photo-modal-caption {
+      font-family: var(--font-mono); font-size: .65rem;
+      letter-spacing: .06em; color: var(--muted);
+    }
+    .photo-modal-counter {
+      font-family: var(--font-mono); font-size: .62rem;
+      letter-spacing: .1em; color: var(--muted); opacity: .55;
+    }
+    .photo-modal-dots { display: flex; gap: .45rem; align-items: center; }
+    .photo-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--muted); opacity: .35; cursor: pointer; transition: all .2s;
+    }
+    .photo-dot.active { background: var(--cyan); opacity: 1; transform: scale(1.3); }
 
-/* ─── ANIMATIONS ────────────────────────────────────────────── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .65s var(--ease), transform .65s var(--ease);
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+    /* ─── COVERAGE CAROUSEL (Built to Heal) ─────────────────────── */
+    .coverage-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 2.5rem; margin-bottom: 1rem;
+    }
+    .coverage-label {
+      font-family: var(--font-mono); font-size: .62rem;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--muted2);
+    }
+    .coverage-scroll-hint {
+      font-family: var(--font-mono); font-size: .6rem;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+      display: flex; align-items: center; gap: .4rem;
+    }
+    .coverage-scroll-hint svg { width: 14px; height: 14px; }
+    .coverage-carousel {
+      display: flex; gap: 1rem;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      padding-bottom: .85rem;
+      scrollbar-width: thin; scrollbar-color: var(--cyan2) transparent;
+    }
+    .coverage-carousel::-webkit-scrollbar { height: 3px; }
+    .coverage-carousel::-webkit-scrollbar-track { background: transparent; }
+    .coverage-carousel::-webkit-scrollbar-thumb { background: var(--cyan2); border-radius: 2px; }
+    .cov-item {
+      flex: 0 0 220px; scroll-snap-align: start;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); padding: 1.1rem 1.15rem;
+      display: flex; flex-direction: column; gap: .55rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .cov-item:hover { border-color: var(--border2); transform: translateY(-2px); }
+    .cov-item-meta {
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .cov-type {
+      font-family: var(--font-mono); font-size: .55rem;
+      letter-spacing: .12em; text-transform: uppercase; color: var(--cyan);
+      display: flex; align-items: center; gap: .35rem;
+    }
+    .cov-type svg { width: 9px; height: 9px; }
+    .cov-campus {
+      font-family: var(--font-mono); font-size: .52rem;
+      letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+      padding: .18rem .5rem; background: var(--bg3);
+      border: 1px solid var(--border); border-radius: 100px;
+    }
+    .cov-title {
+      font-family: var(--font-disp); font-size: .85rem; font-weight: 700;
+      color: var(--white); line-height: 1.35; flex: 1;
+    }
+    .cov-link {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-family: var(--font-mono); font-size: .6rem;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--cyan); transition: color .2s; margin-top: auto;
+    }
+    .cov-link:hover { color: var(--cyan2); }
+    .cov-link svg { width: 10px; height: 10px; }
 
-.work-header-sub {
-  max-width: 560px;
-  margin-top: 1rem;
-  margin-bottom: 0;
-}
+    /* ─── MEDIA MANAGEMENT CARDS ─────────────────────────────────── */
+    .media-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 1.5rem;
+    }
+    .media-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r2); overflow: hidden; display: flex;
+      flex-direction: column;
+      transition: border-color .25s, transform .25s var(--ease), box-shadow .25s;
+      opacity: 0; transform: translateY(24px);
+    }
+    .media-card.visible {
+      opacity: 1; transform: translateY(0);
+      transition: opacity .55s var(--ease), transform .55s var(--ease), border-color .25s, box-shadow .25s;
+    }
+    .media-card:hover {
+      border-color: var(--border2); transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+    .media-thumb {
+      position: relative; aspect-ratio: 16/9;
+      background: var(--bg3); overflow: hidden;
+    }
+    .media-thumb iframe { width: 100%; height: 100%; border: none; }
+    .media-news-bg {
+      width: 100%; height: 100%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .75rem;
+      background: linear-gradient(135deg, var(--bg3) 0%, var(--surface2) 100%);
+    }
+    .media-news-logo {
+      font-family: var(--font-disp); font-size: 1.5rem; font-weight: 800;
+      letter-spacing: -.04em; color: var(--white);
+    }
+    .media-news-logo span { color: var(--cyan); }
+    .media-news-badge {
+      font-family: var(--font-mono); font-size: .6rem; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--muted2);
+      padding: .25rem .65rem; border: 1px solid var(--border);
+      border-radius: 100px; background: var(--bg);
+    }
+    .media-play-btn {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 52px; height: 52px; background: rgba(0,200,255,.18);
+      backdrop-filter: blur(6px); border: 1.5px solid var(--cyan);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      color: var(--cyan); transition: all .2s; cursor: pointer;
+    }
+    .media-play-btn:hover { background: rgba(0,200,255,.3); transform: translate(-50%,-50%) scale(1.05); }
+    .media-play-btn svg { width: 20px; height: 20px; margin-left: 3px; }
+    .media-body { padding: 1.6rem; flex: 1; display: flex; flex-direction: column; }
+    .media-outlet {
+      font-family: var(--font-mono); font-size: .6rem;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--cyan);
+      margin-bottom: .4rem;
+    }
+    .media-title {
+      font-family: var(--font-disp); font-size: 1.05rem; font-weight: 700;
+      color: var(--white); line-height: 1.3; margin-bottom: .65rem; letter-spacing: -.01em;
+    }
+    .media-desc {
+      font-size: .875rem; color: var(--muted); line-height: 1.7;
+      flex: 1; margin-bottom: 1.4rem;
+    }
+    .media-tags { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1.4rem; }
+    .media-footer {
+      display: flex; gap: .75rem; align-items: center; flex-wrap: wrap;
+      padding-top: 1rem; border-top: 1px solid var(--border); margin-top: auto;
+    }
 
-/* ─── RESPONSIVE ────────────────────────────────────────────── */
-@media (max-width: 800px) {
-  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .resume-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .cards-grid { grid-template-columns: 1fr; }
-  .services-list { grid-template-columns: 1fr; }
-  #about,
-  #work,
-  #resume,
-  #contact { padding: 5rem 0; }
-  #hero { padding: 5rem 0 4rem; }
-  .hero-inner { padding-bottom: 4rem; }
-  .resume-header { margin-bottom: 3rem; }
-}
-@media (max-width: 540px) {
-  .work-header { flex-direction: column; align-items: flex-start; }
-  .contact-links { flex-direction: column; align-items: center; }
-  .card-body { padding: 1.25rem; }
-  .contact-inner { padding: 2.5rem 1.5rem; }
-  #about,
-  #work,
-  #resume,
-  #contact { padding: 4rem 0; }
-}
+    /* ─── CAMPAIGN PERFORMANCE DASHBOARD ────────────────────────── */
+    #campaign {
+      padding: 5rem 0 7rem;
+    }
+    .campaign-inner {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 5rem 0;
+    }
+    .dashboard-note {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--font-mono); font-size: .62rem; letter-spacing: .08em;
+      color: var(--muted); background: var(--bg3); border: 1px solid var(--border);
+      border-radius: 100px; padding: .28rem .85rem; margin-bottom: 2rem;
+    }
+    .dashboard-note svg { width: 10px; height: 10px; color: var(--amber); flex-shrink: 0; }
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 1.5rem;
+    }
+    .dash-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r2); overflow: hidden;
+      opacity: 0; transform: translateY(20px);
+    }
+    .dash-card.visible {
+      opacity: 1; transform: translateY(0);
+      transition: opacity .55s var(--ease), transform .55s var(--ease), border-color .2s, box-shadow .2s;
+    }
+    .dash-card:hover {
+      border-color: var(--border2);
+      box-shadow: 0 16px 40px rgba(0,0,0,.35);
+    }
+    .dash-header {
+      padding: 1.3rem 1.5rem 1rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+    }
+    .dash-header-left { flex: 1; }
+    .dash-campaign-label {
+      font-family: var(--font-mono); font-size: .56rem;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--cyan);
+      margin-bottom: .35rem;
+    }
+    .dash-campaign-title {
+      font-family: var(--font-disp); font-size: .95rem; font-weight: 700;
+      color: var(--white); line-height: 1.3;
+    }
+    .dash-type-pill {
+      flex-shrink: 0; padding: .26rem .65rem;
+      background: rgba(0,200,255,.09); border: 1px solid rgba(0,200,255,.2);
+      border-radius: 100px; font-family: var(--font-mono);
+      font-size: .56rem; letter-spacing: .08em; text-transform: uppercase; color: var(--cyan);
+      white-space: nowrap;
+    }
+    /* Hero metric (the big number) */
+    .dash-hero-metric {
+      padding: 1.25rem 1.5rem;
+      background: linear-gradient(135deg, rgba(0,200,255,.07) 0%, rgba(0,153,204,.04) 100%);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem;
+    }
+    .dash-hero-val {
+      font-family: var(--font-disp); font-size: 2.5rem; font-weight: 800;
+      color: var(--cyan); line-height: 1;
+    }
+    .dash-hero-label {
+      font-family: var(--font-mono); font-size: .62rem;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--muted2);
+      line-height: 1.4; margin-top: .4rem;
+    }
+    .dash-hero-icon {
+      width: 40px; height: 40px; background: rgba(0,200,255,.1);
+      border: 1px solid rgba(0,200,255,.2); border-radius: var(--r);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cyan); flex-shrink: 0;
+    }
+    .dash-hero-icon svg { width: 18px; height: 18px; }
+    /* Secondary metrics grid */
+    .dash-metrics {
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .dash-metric {
+      padding: 1rem 1.4rem;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .dash-metric:nth-child(even) { border-right: none; }
+    .dash-metric:nth-last-child(-n+2) { border-bottom: none; }
+    .dash-metric-val {
+      font-family: var(--font-disp); font-size: 1.45rem; font-weight: 800;
+      color: var(--white); line-height: 1; margin-bottom: .3rem;
+    }
+    .dash-metric-val.green { color: var(--green); }
+    .dash-metric-val.amber { color: var(--amber); }
+    .dash-metric-label {
+      font-family: var(--font-mono); font-size: .56rem;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted); line-height: 1.4;
+    }
+    .dash-campaign-meta {
+      padding: .85rem 1.5rem;
+      border-top: 1px solid var(--border);
+      display: flex; gap: 1.25rem; flex-wrap: wrap;
+    }
+    .dash-meta-item {
+      display: flex; align-items: center; gap: .4rem;
+      font-family: var(--font-mono); font-size: .59rem;
+      letter-spacing: .06em; color: var(--muted);
+    }
+    .dash-meta-item svg { width: 10px; height: 10px; flex-shrink: 0; }
+    .dash-links {
+      display: flex; gap: .75rem; flex-wrap: wrap;
+      padding: .9rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .dash-link {
+      display: inline-flex; align-items: center; gap: .35rem;
+      font-family: var(--font-mono); font-size: .61rem;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--cyan); transition: color .2s;
+    }
+    .dash-link:hover { color: var(--cyan2); }
+    .dash-link svg { width: 11px; height: 11px; }
 
+    /* ─── RESUME ─────────────────────────────────────────────────── */
+    #resume {
+      padding: 7rem 0;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+    }
+    .resume-header { text-align: center; margin-bottom: 4rem; }
+    .resume-title {
+      font-family: var(--font-disp); font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800; letter-spacing: -.035em; color: var(--white); margin-bottom: .75rem;
+    }
+    .resume-sub { font-size: .95rem; color: var(--muted); }
+    .resume-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-bottom: 4rem; }
+    .resume-col-title {
+      font-family: var(--font-mono); font-size: .7rem; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--cyan); margin-bottom: 1.75rem; margin-top: 0;
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .resume-col-title + .resume-col-title,
+    .resume-col-title.mt { margin-top: 3rem; }
+    .resume-col-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .timeline { display: flex; flex-direction: column; }
+    .tl-item { position: relative; padding-left: 2.25rem; padding-bottom: 2.25rem; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item::before {
+      content: ''; position: absolute; left: 7px; top: 8px; bottom: -8px;
+      width: 1px; background: var(--border);
+    }
+    .tl-item:last-child::before { display: none; }
+    .tl-dot {
+      position: absolute; left: 0; top: 6px; width: 15px; height: 15px;
+      border-radius: 50%; border: 2px solid var(--cyan); background: var(--bg); z-index: 1;
+    }
+    .tl-dot.current { background: var(--cyan); box-shadow: 0 0 12px rgba(0,200,255,.5); }
+    .tl-year { font-family: var(--font-mono); font-size: .62rem; letter-spacing: .08em; color: var(--cyan); margin-bottom: .25rem; }
+    .tl-role { font-family: var(--font-disp); font-size: 1rem; font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: .2rem; }
+    .tl-company { font-family: var(--font-mono); font-size: .72rem; color: var(--muted); margin-bottom: .5rem; }
+    .tl-desc { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+    .skill-category { margin-bottom: 1.75rem; }
+    .skill-category-title {
+      font-family: var(--font-mono); font-size: .62rem; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--cyan); margin-bottom: .85rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .skill-category-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: .45rem; }
+    .skill-pill-item {
+      padding: .38rem .85rem; background: var(--bg3);
+      border: 1px solid var(--border); border-radius: var(--r);
+      font-size: .78rem; color: var(--text); letter-spacing: .01em;
+    }
+    .tools-grid { display: flex; flex-wrap: wrap; gap: .5rem; }
+    .tool-chip {
+      padding: .38rem .85rem; background: var(--surface); border: 1px solid var(--border);
+      border-radius: 100px; font-family: var(--font-mono); font-size: .65rem;
+      letter-spacing: .05em; color: var(--muted);
+    }
+    .edu-card {
+      padding: 1.25rem; background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r); margin-bottom: .75rem;
+    }
+    .edu-degree { font-family: var(--font-disp); font-size: .95rem; font-weight: 700; color: var(--white); margin-bottom: .2rem; }
+    .edu-school { font-family: var(--font-mono); font-size: .68rem; color: var(--cyan); margin-bottom: .25rem; }
+    .edu-year { font-family: var(--font-mono); font-size: .62rem; color: var(--muted); }
+    .resume-download { display: flex; justify-content: center; margin-top: 3rem; }
+
+    /* ─── CONTACT ────────────────────────────────────────────────── */
+    #contact { padding: 7rem 0; text-align: center; }
+    .contact-inner {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r2); padding: 4rem clamp(2rem, 6vw, 6rem);
+      position: relative; overflow: hidden;
+    }
+    .contact-inner::before {
+      content: ''; position: absolute; top: -60px; left: 50%;
+      transform: translateX(-50%); width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(0,200,255,.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .contact-title {
+      font-family: var(--font-disp); font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800; letter-spacing: -.035em; color: var(--white); margin-bottom: .75rem;
+    }
+    .contact-sub {
+      font-size: 1rem; color: var(--muted); margin-bottom: 2.5rem;
+      max-width: 460px; margin-left: auto; margin-right: auto;
+    }
+    .contact-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .contact-link-item {
+      display: flex; align-items: center; gap: .5rem;
+      font-family: var(--font-mono); font-size: .72rem;
+      letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+      padding: .6rem 1.1rem; border: 1px solid var(--border);
+      border-radius: var(--r); transition: all .2s;
+    }
+    .contact-link-item:hover { color: var(--cyan); border-color: var(--border2); }
+    .contact-link-item svg { width: 14px; height: 14px; }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────── */
+    footer { border-top: 1px solid var(--border); padding: 1.75rem 0; position: relative; z-index: 1; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-family: var(--font-mono); font-size: .65rem; letter-spacing: .06em; color: var(--muted); }
+    .footer-copy span { color: var(--cyan); }
+
+    /* ─── ANIMATIONS ─────────────────────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── SOCIAL PERFORMANCE CARDS ──────────────────────────────── */
+    .social-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.5rem;
+    }
+    .social-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r2); overflow: hidden; display: flex;
+      flex-direction: column;
+      transition: border-color .25s, transform .25s var(--ease), box-shadow .25s;
+      opacity: 0; transform: translateY(24px);
+    }
+    .social-card.visible {
+      opacity: 1; transform: translateY(0);
+      transition: opacity .55s var(--ease), transform .55s var(--ease), border-color .25s, box-shadow .25s;
+    }
+    .social-card:hover {
+      border-color: var(--border2); transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px var(--border2);
+    }
+    .social-card-img {
+      position: relative; aspect-ratio: 4/3;
+      overflow: hidden; background: var(--bg3);
+    }
+    .social-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s var(--ease); }
+    .social-card:hover .social-card-img img { transform: scale(1.04); }
+    .social-img-placeholder {
+      width: 100%; height: 100%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .75rem; color: var(--muted);
+    }
+    .social-img-placeholder svg { width: 28px; height: 28px; opacity: .28; }
+    .social-img-placeholder span { font-family: var(--font-mono); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; opacity: .28; }
+    .social-card-body { padding: 1.4rem; flex: 1; display: flex; flex-direction: column; }
+    .social-campaign-label { font-family: var(--font-mono); font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; color: var(--cyan); margin-bottom: .35rem; }
+    .social-card-title { font-family: var(--font-disp); font-size: .95rem; font-weight: 700; color: var(--white); line-height: 1.3; margin-bottom: 1rem; letter-spacing: -.01em; }
+    .social-metrics-strip {
+      display: flex; border: 1px solid var(--border);
+      border-radius: var(--r); overflow: hidden; margin-bottom: 1rem;
+    }
+    .sm-metric { flex: 1; padding: .75rem .55rem; text-align: center; border-right: 1px solid var(--border); }
+    .sm-metric:last-child { border-right: none; }
+    .sm-val { font-family: var(--font-disp); font-size: 1.05rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: .25rem; }
+    .sm-val.cyan { color: var(--cyan); }
+    .sm-val.green { color: var(--green); }
+    .sm-val.amber { color: var(--amber); }
+    .sm-label { font-family: var(--font-mono); font-size: .5rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); line-height: 1.3; }
+    .social-sub-stats { font-family: var(--font-mono); font-size: .58rem; letter-spacing: .04em; color: var(--muted); margin-bottom: 1rem; line-height: 1.5; }
+    .social-card-footer { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; padding-top: .9rem; border-top: 1px solid var(--border); margin-top: auto; }
+
+    /* ─── SOCIAL CARD INLINE CAROUSEL ───────────────────────────── */
+    .sc-track { position: relative; width: 100%; height: 100%; overflow: hidden; }
+    .sc-slides-wrap { display: flex; width: 100%; height: 100%; transition: transform .4s var(--ease); }
+    .sc-slide { min-width: 100%; height: 100%; flex-shrink: 0; }
+    .sc-slide img { width: 100%; height: 100%; object-fit: cover; }
+    .sc-slide .social-img-placeholder { width: 100%; height: 100%; }
+    .sc-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(7,8,15,.82); backdrop-filter: blur(6px);
+      border: 1px solid var(--border2); color: var(--text);
+      width: 30px; height: 30px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: all .2s; z-index: 3; padding: 0;
+    }
+    .sc-btn:hover { border-color: var(--cyan); color: var(--cyan); }
+    .sc-btn svg { width: 14px; height: 14px; pointer-events: none; }
+    .sc-prev-btn { left: .45rem; }
+    .sc-next-btn { right: .45rem; }
+    .sc-dots-wrap {
+      position: absolute; bottom: .5rem; left: 50%;
+      transform: translateX(-50%); display: flex; gap: .4rem; z-index: 3;
+    }
+    .sc-dot-btn {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: rgba(255,255,255,.35); cursor: pointer;
+      transition: all .2s; border: none; padding: 0;
+    }
+    .sc-dot-btn.active { background: var(--cyan); transform: scale(1.4); }
+    .sc-counter {
+      position: absolute; top: .55rem; right: .65rem;
+      font-family: var(--font-mono); font-size: .55rem; letter-spacing: .1em;
+      color: var(--white); background: rgba(7,8,15,.7);
+      backdrop-filter: blur(4px); padding: .18rem .5rem;
+      border-radius: 100px; z-index: 3;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 1000px) {
+      .about-stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 800px) {
+      .resume-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .media-cards-grid { grid-template-columns: 1fr; }
+      .dashboard-grid { grid-template-columns: 1fr; }
+      #about, #work, #resume, #contact { padding: 5rem 0; }
+      #hero { padding: 5rem 0 4rem; }
+      .hero-inner { padding-bottom: 4rem; }
+      .work-subsection { padding: 3.5rem 0; }
+      .campaign-inner { padding: 3.5rem 0; }
+    }
+    @media (max-width: 540px) {
+      .about-stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .contact-links { flex-direction: column; align-items: center; }
+      .card-body { padding: 1.25rem; }
+      .media-body { padding: 1.25rem; }
+      .contact-inner { padding: 2.5rem 1.5rem; }
+      #about, #work, #resume, #contact { padding: 4rem 0; }
+    }
   </style>
 </head>
 <body>
 
   <div class="grid-bg"></div>
 
-  <!-- ─── HERO ─── -->
-
+  <!-- ─── HERO ──────────────────────────────────────────────────── -->
   <section id="hero" style="position:relative;">
     <div class="container">
       <div class="hero-inner">
-      <div class="hero-tag">Atlanta Metro Area · Open to New Opportunities</div>
-      <h1 class="hero-name">
-        Tray<span class="accent"> Lowery</span>
-        <span class="line2">Content Strategist &amp; Web Specialist</span>
-      </h1>
-      <p class="hero-sub">
-        I've spent a majority of the last decade in marketing and communications figuring out how to get the right messages and information to the right people. <strong>Across that time, I've learned that good content isn't just well-written. It's well-placed, well-timed and created with purpose.</strong>
-      </p>
-      <div class="hero-actions">
-        <a href="your-resume.pdf" download class="btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          Download Resume
-        </a>
+        <div class="hero-tag">Atlanta Metro Area · Open to New Opportunities</div>
+        <h1 class="hero-name">
+          Tray<span class="accent"> Lowery</span>
+          <span class="line2">Content Strategist &amp; Web Specialist</span>
+        </h1>
+        <p class="hero-sub">
+          I've spent a majority of the last decade in marketing and communications figuring out how to get the right messages and information to the right people. <strong>Across that time, I've learned that good content isn't just well-written. It's well-placed, well-timed and created with purpose.</strong>
+        </p>
+        <div class="hero-actions">
+          <a href="your-resume.pdf" download class="btn-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            Download Resume
+          </a>
+        </div>
       </div>
-
-  </div><!-- /hero-inner -->
-</div><!-- /container -->
-<div class="scroll-hint">
-  <span>Scroll</span>
-  <div class="scroll-line"></div>
-</div>
-
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
   </section>
 
-  <!-- ─── ABOUT ─── -->
-
+  <!-- ─── ABOUT STATS STRIP ─────────────────────────────────────── -->
   <section id="about">
     <div class="container">
-      <div class="about-grid">
-        <div class="reveal">
-          <div class="section-label">About Me</div>
-          <h2 class="about-title">I help organizations <em>tell their stories</em></h2>
-          <p class="about-text">I've spent most of my career working with a variety of print and digital content, writing copy and shaping strategies that help organizations show up across the channels they want and connecting where it matters most. I've spent most of that time has been spent at <strong>Tanner Health</strong>, a regional healthcare system in west Georgia, where I grew from an intern to a content strategist creating content for the regional health system's internal and external marketing and communications campaigns.</p>
-          <p class="about-text">In content development, much of my focus is in strategy and execution, where I don't just plan content — I write it, launch it, manage and measure it as I push it out into the world. Whether it's a press release, a social media campaign, a website or an internal communication, wrap my strategy around who's reading, how they're engaging, why they should care and what they should do next.</p>
-          <p class="about-text">In addition to managing content, I've been fortunate to curate an eclectic set of skills that have allowed me to lend support across graphic and web design, photography and videography, search engine optimization, campaign analytics and even computer science and IT — two industries I'm particularly passionate about — so much that I've studied the field and picked up a couple of COMPTIA certifications, which taught me not only about computer systems and configuration, but also how the best communicators understand the systems where their content lives.</p>
+      <div class="about-stats-grid">
+        <div class="about-stat reveal">
+          <div class="about-stat-num">10+</div>
+          <div class="about-stat-label">Years of Industry Experience</div>
         </div>
-        <div class="reveal">
-          <div class="services-list">
-            <div class="service-pill"><span class="dot"></span>Content Strategy</div>
-            <div class="service-pill"><span class="dot"></span>Copywriting</div>
-            <div class="service-pill"><span class="dot"></span>Press and Print Materials</div>
-            <div class="service-pill"><span class="dot"></span>Web Content</div>
-            <div class="service-pill"><span class="dot"></span>Social Media</div>
-            <div class="service-pill"><span class="dot"></span>Email Campaigns</div>
-            <div class="service-pill"><span class="dot"></span>Video Scripting</div>
-            <div class="service-pill"><span class="dot"></span>Campaign Analytics</div>
-          </div>
+        <div class="about-stat reveal">
+          <div class="about-stat-num">3</div>
+          <div class="about-stat-label">CompTIA + ITIL Certifications</div>
+        </div>
+        <div class="about-stat reveal">
+          <div class="about-stat-num">100+</div>
+          <div class="about-stat-label">Campaigns Planned &amp; Launched</div>
+        </div>
+        <div class="about-stat reveal">
+          <div class="about-stat-num">PM</div>
+          <div class="about-stat-label">Project Management&nbsp;&nbsp;CompTIA Project+ Certified</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ─── WORK ─── -->
-
+  <!-- ─── WORK ──────────────────────────────────────────────────── -->
   <section id="work">
     <div class="container">
-      <div class="work-header">
-        <div>
-          <div class="section-label">a snapshot of</div>
-          <h2 class="work-title">Some things I've<br>built, written &amp; worked on</h2>
-          <p class="about-text work-header-sub">Here's overview of the types of campaigns, content and projects I've worked on or stories I've coordinated, where behind each initiative is a story to tell.</p>
-        </div>
-      </div>
-
-  <div class="cards-grid" id="cardsGrid">
-
-    <!-- CARD 1 -->
-    <div class="card" data-category="web">
-      <div class="card-img">
-        <img src="/photos/Dr.Espinel on DaVinci5 Telepresence Console.jpeg" alt="Dr. José Espinel operates the da Vinci 5 robotic surgical system at Tanner Health">
-        <div class="card-overlay"></div>
-        <span class="card-type-badge">News &amp; PR</span>
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">Surgery Without Borders</h3>
-        <p class="card-desc">Dr. José E. Espinel, MD, a surgeon specializing in minimally-invasive and robotic surgery, became among the first physicians to deploy the da Vinci 5 robotic surgical platform to broadcast a live procedure to his medical colleagues in Ecuador. To record the moment and his achievement, I photographed him as he performed the procedure and wrote a short post to share on the health system's social media channels, capturing both his clinical milestone and the broader story of how a regional community hospital in west Georgia can deliver world-class care.</p>
-        <div class="card-tags">
-          <span class="tag">Healthcare PR</span>
-          <span class="tag">News Writing</span>
-          <span class="tag">Web Content</span>
-        </div>
-        <div class="card-footer">
-          <a href="https://www.tanner.org/news/surgery-without-borders-tanners-robotic-program-goes-international" class="card-link" target="_blank" rel="noopener">
-            Read the Article
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-          </a>
-          <a href="https://www.instagram.com/p/DObuAfhD7Mn/" class="card-link" target="_blank" rel="noopener">
-            View Post
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-          </a>
-        </div>
+      <div class="work-intro reveal">
+        <div class="section-label">My Work</div>
+        <h2 class="work-intro-title">Some things I've built,<br>written &amp; worked on</h2>
+        <p class="work-intro-sub">Behind each initiative is a story — and a strategy. Here's a cross-section of the campaigns, content and projects I've developed, managed and measured across storytelling, media relations and digital campaign performance.</p>
       </div>
     </div>
 
-    <!-- CARD 2 -->
-    <div class="card" data-category="content">
-      <div class="card-img">
-        <img src="/photos/Healing Art Installation at TMC_C.png" alt="The art installation during construction at Tanner Medical Center/Carrollton">
-        <div class="card-overlay"></div>
-        <span class="card-type-badge">Feature Story</span>
+    <!-- ── SUB-SECTION 1: STORYTELLING ───────────────────────────── -->
+    <div class="work-subsection">
+      <div class="container">
+        <div class="reveal">
+          <div class="subsec-label">Writing · Photography · Storytelling</div>
+          <h3 class="subsec-title">I help orgs <em>tell their stories</em></h3>
+          <p class="subsec-desc">From feature stories to breaking news, I capture the moments that matter — in words and through the lens. Each of these pieces reflects a story I identified, shaped and produced for Tanner Health across print, digital and social channels.</p>
+        </div>
+
+        <div class="cards-grid">
+
+          <!-- SURGERY WITHOUT BORDERS -->
+          <div class="card">
+            <div class="card-img">
+              <img src="/photos/Dr.Espinel on DaVinci5 Telepresence Console.jpeg" alt="Dr. José Espinel operates the da Vinci 5 robotic surgical system at Tanner Health" loading="lazy">
+              <div class="card-overlay"></div>
+              <span class="card-type-badge">News &amp; PR</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Surgery Without Borders</h3>
+              <p class="card-desc">Dr. José E. Espinel became among the first physicians to use the da Vinci 5 robotic platform to broadcast a live procedure to colleagues in Ecuador. I photographed the procedure and wrote the story — capturing his clinical milestone and how a community hospital in west Georgia can deliver world-class care.</p>
+              <div class="card-tags">
+                <span class="tag">Healthcare PR</span>
+                <span class="tag">News Writing</span>
+                <span class="tag">Photography</span>
+                <span class="tag">Web Content</span>
+              </div>
+              <div class="card-footer">
+                <a href="https://www.tanner.org/news/surgery-without-borders-tanners-robotic-program-goes-international" class="card-link" target="_blank" rel="noopener">
+                  Read the Article
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                </a>
+                <a href="https://www.instagram.com/p/DObuAfhD7Mn/" class="card-link" target="_blank" rel="noopener">
+                  View Post
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                </a>
+                <button class="card-link" onclick="openPhotoModal()" style="background:none;border:none;cursor:pointer;padding:0;">
+                  View Photos
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1h4v4H1zM7 1h4v4H7zM1 7h4v4H1zM7 7h4v4H7z"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- BUILT TO HEAL -->
+          <div class="card">
+            <div class="card-img">
+                <img src="/photos/Healing Art Installation at TMC_C.png" alt="Art installation at Tanner Medical Center/Carrollton" loading="lazy">
+                <div class="card-overlay"></div>
+                <span class="card-type-badge">Feature Story &amp; Photo Coverage</span>
+              </div>
+              <div class="card-body">
+                <h3 class="card-title">Built to Heal</h3>
+                <p class="card-desc">When Tanner's new patient tower opened in 2025, the story went beyond square footage — it was about what the facility meant to the community. I photographed and wrote year-long coverage of construction milestones, art installations and groundbreaking ceremonies at both campuses.</p>
+                <div class="card-tags">
+                  <span class="tag">Feature Writing</span>
+                  <span class="tag">Healthcare PR</span>
+                  <span class="tag">Photography</span>
+                  <span class="tag">Project Coverage</span>
+                  <span class="tag">Community Engagement</span>
+                </div>
+                <div class="card-footer">
+                  <a href="https://www.tanner.org/News/Healing-with-Art-Tanners-New-Patient-Tower-Is-Built-to-Heal" class="card-link" target="_blank" rel="noopener">
+                    Read the Story
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                  </a>
+                  <a href="https://www.facebook.com/tannerhealth/posts/new-artwork-created-by-local-artists-gary-bannister-and-angelique-jackson-at-the/1435755174772995" class="card-link" target="_blank" rel="noopener">
+                    View Post
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                  </a>
+                  <a href="https://www.facebook.com/reel/652221127544521" class="card-link" target="_blank" rel="noopener">
+                    Watch Reel
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                  </a>
+                </div>
+              </div>
+
+            <!-- COVERAGE CAROUSEL -->
+            <div style="padding: 1.5rem 1.75rem 1.75rem; border-top: 1px solid var(--border);">
+              <div class="coverage-header">
+                <span class="coverage-label">More Coverage from This Project</span>
+                <span class="coverage-scroll-hint">
+                  Scroll to explore
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+                </span>
+              </div>
+              <div class="coverage-carousel">
+
+                <!-- Carrollton items -->
+                <div class="cov-item">
+                  <div class="cov-item-meta">
+                    <span class="cov-type">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                      Article
+                    </span>
+                    <span class="cov-campus">Carrollton</span>
+                  </div>
+                  <div class="cov-title">New Year Brings New Updates for Tanner's New Patient Tower</div>
+                  <a href="https://www.tanner.org/News/New-Year-Brings-New-Updates-for-Tanners-New-Patient-Tower" class="cov-link" target="_blank" rel="noopener">
+                    Read Article
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                  </a>
+                </div>
+
+                <div class="cov-item">
+                  <div class="cov-item-meta">
+                    <span class="cov-type">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                      Article
+                    </span>
+                    <span class="cov-campus">Carrollton</span>
+                  </div>
+                  <div class="cov-title">Tanner Unveils New Expansion at Tanner Medical Center Carrollton</div>
+                  <a href="https://www.tanner.org/News/Tanner-Unveils-New-Expansion-at-Tanner-Medical-Center-Carrollton" class="cov-link" target="_blank" rel="noopener">
+                    Read Article
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                  </a>
+                </div>
+
+                <div class="cov-item">
+                  <div class="cov-item-meta">
+                    <span class="cov-type">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                      Reel
+                    </span>
+                    <span class="cov-campus">Carrollton</span>
+                  </div>
+                  <div class="cov-title">Construction Progress Reel — Patient Tower Build</div>
+                  <a href="https://www.facebook.com/reel/1138533277279649" class="cov-link" target="_blank" rel="noopener">
+                    Watch Reel
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                  </a>
+                </div>
+
+                <div class="cov-item">
+                  <div class="cov-item-meta">
+                    <span class="cov-type">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M2 9h20M9 21V9"/></svg>
+                      Post
+                    </span>
+                    <span class="cov-campus">Carrollton</span>
+                  </div>
+                  <div class="cov-title">Before &amp; After: A Summer of Construction Progress</div>
+                  <a href="https://www.facebook.com/tannerhealth/posts/before-and-after-a-summer-of-construction-progress-at-tanner-medical-centercarro/1422892012725978/" class="cov-link" target="_blank" rel="noopener">
+                    View Post
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                  </a>
+                </div>
+
+                <div class="cov-item">
+                  <div class="cov-item-meta">
+                    <span class="cov-type">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                      Video
+                    </span>
+                    <span class="cov-campus">Carrollton</span>
+                  </div>
+                  <div class="cov-title">Patient Tower Construction — Progress Video Update</div>
+                  <a href="https://www.facebook.com/share/v/1CDo4dDn53/" class="cov-link" target="_blank" rel="noopener">
+                    Watch Video
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                  </a>
+                </div>
+
+                <div class="cov-item">
+                  <div class="cov-item-meta">
+                    <span class="cov-type">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M2 9h20M9 21V9"/></svg>
+                      Post
+                    </span>
+                    <span class="cov-campus">Carrollton</span>
+                  </div>
+                  <div class="cov-title">Construction Update — New Patient Tower Coverage</div>
+                  <a href="https://www.facebook.com/share/1BHFfjzpad/" class="cov-link" target="_blank" rel="noopener">
+                    View Post
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                  </a>
+                </div>
+
+                <!-- Villa Rica items -->
+                <div class="cov-item">
+                  <div class="cov-item-meta">
+                    <span class="cov-type">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                      Article
+                    </span>
+                    <span class="cov-campus">Villa Rica</span>
+                  </div>
+                  <div class="cov-title">Tanner Breaks Ground on Major Expansion at Villa Rica</div>
+                  <a href="https://www.tanner.org/News/Tanner-Breaks-Ground-on-Major-Expansion-at-Tanner-Medical-Center-Villa-Rica" class="cov-link" target="_blank" rel="noopener">
+                    Read Article
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                  </a>
+                </div>
+
+                <div class="cov-item">
+                  <div class="cov-item-meta">
+                    <span class="cov-type">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                      Article
+                    </span>
+                    <span class="cov-campus">Villa Rica</span>
+                  </div>
+                  <div class="cov-title">Construction Begins on New Women's Health Expansion</div>
+                  <a href="https://www.tanner.org/News/Construction-Begins-on-New-Womens-Health-Expansion-at-Tanner-Medical-Center-Villa-Rica" class="cov-link" target="_blank" rel="noopener">
+                    Read Article
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                  </a>
+                </div>
+
+              </div><!-- /coverage-carousel -->
+            </div>
+          </div><!-- /Built to Heal card -->
+
+          <!-- TRAUMA KIT / ADDITIONAL COVERAGE -->
+          <div class="card">
+            <div class="card-img">
+              <div class="card-img-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Community Safety</span>
+              </div>
+              <div class="card-overlay"></div>
+              <span class="card-type-badge">Community News</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">Stop the Bleed: Trauma Kits for Haralson County</h3>
+              <p class="card-desc">When Higgins General Hospital donated trauma kits to the Haralson County Sheriff's Office, I covered the story — capturing how regional hospitals help equip local responders for unexpected emergencies and why community-level preparedness matters.</p>
+              <div class="card-tags">
+                <span class="tag">Community News</span>
+                <span class="tag">Healthcare PR</span>
+                <span class="tag">News Writing</span>
+              </div>
+              <div class="card-footer">
+                <a href="https://www.tanner.org/News/Higgins-General-Hospital-Donates-Trauma-Kits-to-Equip-Haralson-County-Sheriffs-Office-to-Handle-Unexpected-Emergencies" class="card-link" target="_blank" rel="noopener">
+                  Read the Story
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /cards-grid -->
       </div>
-      <div class="card-body">
-        <h3 class="card-title">Built to Heal</h3>
-        <p class="card-desc">When Tanner Medical Center/Carrollton opened its new patient tower in 2025, the story wasn't just about the expansion or its square footage. It was about what the new facility meant to the community it serves and how its architecture was designed to help heal those receiving care inside it. As part of my year-long coverage of the expansion project, I captured photos and wrote a feature covering the istallation of a nearly 7,500-pound wind sculpture created by local artists for the tower's courtyard.</p>
-        <div class="card-tags">
-          <span class="tag">Feature Writing</span>
-          <span class="tag">Healthcare PR</span>
-          <span class="tag">Community Engagement</span>
+    </div><!-- /work-subsection 1 -->
+
+    <!-- ── SUB-SECTION 2: MEDIA MANAGEMENT ───────────────────────── -->
+    <div class="work-subsection" id="media">
+      <div class="container">
+        <div class="reveal">
+          <div class="subsec-label">Broadcast · Press Relations · PR Coordination</div>
+          <h3 class="subsec-title">Media <em>Management</em></h3>
+          <p class="subsec-desc">Behind every news story is a communications team. Here's a look at broadcast and media coverage I coordinated, pitched and facilitated for Tanner Health — from breaking news to product launches and AI-powered care announcements.</p>
         </div>
-        <div class="card-footer">
-          <a href="https://www.tanner.org/News/Healing-with-Art-Tanners-New-Patient-Tower-Is-Built-to-Heal" class="card-link" target="_blank" rel="noopener">
-            Read the Story
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-          </a>
-          <a href="https://www.facebook.com/tannerhealth/posts/new-artwork-created-by-local-artists-gary-bannister-and-angelique-jackson-at-the/1435755174772995" class="card-link" target="_blank" rel="noopener">
-            View Post
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-          </a>
-          <a href="https://www.facebook.com/reel/652221127544521" class="card-link" target="_blank" rel="noopener">
-            Watch Reel
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-          </a>
+
+        <div class="media-cards-grid">
+
+          <!-- FOX5: Snakebite -->
+          <div class="media-card">
+            <div class="media-thumb">
+              <div class="media-news-bg">
+                <div class="media-news-logo">FOX<span>5</span> Atlanta</div>
+                <div class="media-news-badge">Broadcast News Coverage</div>
+              </div>
+              <a href="https://www.fox5atlanta.com/news/georgia-woman-hospitalized-after-venomous-snakebite-villa-rica-walmart-parking-lot" target="_blank" rel="noopener" class="media-play-btn" title="Watch Story on Fox5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </a>
+            </div>
+            <div class="media-body">
+              <div class="media-outlet">Fox5 Atlanta · Broadcast Feature</div>
+              <h3 class="media-title">Georgia Woman Hospitalized After Venomous Snakebite at Villa Rica Walmart</h3>
+              <p class="media-desc">When a patient arrived at Tanner Medical Center/Villa Rica after a venomous snakebite, I coordinated with Fox5 Atlanta to facilitate interviews and ensure accurate, timely coverage of the patient's care.</p>
+              <div class="media-tags">
+                <span class="tag">Media Coordination</span>
+                <span class="tag">Broadcast PR</span>
+                <span class="tag">Healthcare News</span>
+              </div>
+              <div class="media-footer">
+                <a href="https://www.fox5atlanta.com/news/georgia-woman-hospitalized-after-venomous-snakebite-villa-rica-walmart-parking-lot" class="card-link" target="_blank" rel="noopener">
+                  Watch the Story
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- FOX5: IV Fluid Shortage -->
+          <div class="media-card">
+            <div class="media-thumb">
+              <div class="media-news-bg">
+                <div class="media-news-logo">FOX<span>5</span> Atlanta</div>
+                <div class="media-news-badge">Broadcast News Coverage</div>
+              </div>
+              <a href="https://www.fox5atlanta.com/news/georgia-hospitals-rationing-iv-fluid-amid-shortage-feds-stepping" target="_blank" rel="noopener" class="media-play-btn" title="Watch Story on Fox5">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </a>
+            </div>
+            <div class="media-body">
+              <div class="media-outlet">Fox5 Atlanta · Broadcast Feature</div>
+              <h3 class="media-title">Georgia Hospitals Rationing IV Fluid Amid Shortage — Feds Stepping In</h3>
+              <p class="media-desc">During a nationwide IV fluid shortage following Hurricane Helene, I coordinated Tanner Health's participation in this Fox5 Atlanta story — working with reporters and clinical leadership to ensure accurate coverage of how Tanner was managing the crisis.</p>
+              <div class="media-tags">
+                <span class="tag">Crisis Communications</span>
+                <span class="tag">Media Coordination</span>
+                <span class="tag">Broadcast PR</span>
+              </div>
+              <div class="media-footer">
+                <a href="https://www.fox5atlanta.com/news/georgia-hospitals-rationing-iv-fluid-amid-shortage-feds-stepping" class="card-link" target="_blank" rel="noopener">
+                  Watch the Story
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- ABRIDGE: AI Campaign + YouTube -->
+          <div class="media-card">
+              <div class="media-thumb">
+                <iframe
+                  src="https://www.youtube.com/embed/R_LotL-nB-Q"
+                  title="Tanner Health + Abridge AI Campaign"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen
+                  loading="lazy">
+                </iframe>
+              </div>
+              <div class="media-body">
+                <div class="media-outlet">Abridge · Press Release &amp; Campaign Video</div>
+                <h3 class="media-title">Tanner Health Deploys Abridge AI-Powered Documentation</h3>
+                <p class="media-desc">When Tanner launched Abridge — an AI tool that documents patient visits in real time — I coordinated the external communications strategy, including a press release through Abridge's channels and this campaign video, requiring close collaboration across clinical, marketing, legal and technology teams.</p>
+                <div class="media-tags">
+                  <span class="tag">Project Management</span>
+                  <span class="tag">PR Coordination</span>
+                  <span class="tag">Campaign Video</span>
+                  <span class="tag">Healthcare AI</span>
+                  <span class="tag">Cross-Functional</span>
+                </div>
+                <div class="media-footer">
+                  <a href="https://www.abridge.com/press-release/tanner-health-abridge-announcement" class="card-link" target="_blank" rel="noopener">
+                    Read Press Release
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                  </a>
+                  <a href="https://youtu.be/R_LotL-nB-Q" class="card-link" target="_blank" rel="noopener">
+                    Watch on YouTube
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                  </a>
+                </div>
+              </div>
+          </div>
+
+        </div><!-- /media-cards-grid -->
+      </div>
+    </div><!-- /work-subsection 2 -->
+
+  </section><!-- /work -->
+
+  <!-- ── SUB-SECTION 3: CAMPAIGN PERFORMANCE ───────────────────── -->
+  <div id="campaign">
+    <div class="campaign-inner">
+      <div class="container">
+        <div class="reveal" style="margin-bottom: 2.25rem;">
+          <div class="subsec-label">Social Media · Paid Campaigns · Analytics</div>
+          <h3 class="subsec-title">Campaign <em>Performance</em></h3>
+          <p class="subsec-desc" style="margin-bottom:1.25rem;">I wrote, launched and managed a paid social campaign series to promote Tanner MyChart — driving patient enrollment, engagement and feature awareness. Here's how each campaign performed.</p>
+          <div class="dashboard-note">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Replace each placeholder with a campaign image or screenshot — swap the src on any card's img tag
+          </div>
         </div>
+
+        <div class="social-cards-grid">
+
+          <!-- Campaign 1: Connect Your Family's Accounts — Images 1 & 2 (IMG_6198, IMG_6199): best post = 823 clicks, $0.29/click, $236.19, 29,312 reached -->
+          <div class="social-card">
+            <div class="social-card-img">
+              <div class="social-img-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>Add Campaign Image</span>
+              </div>
+              <span class="card-type-badge">Blog + Paid Ad</span>
+            </div>
+            <div class="social-card-body">
+              <div class="social-campaign-label">MyChart Campaign · Traffic</div>
+              <div class="social-card-title">Connect Your Family's Accounts in Tanner MyChart</div>
+              <div class="social-metrics-strip">
+                <div class="sm-metric">
+                  <div class="sm-val cyan">823</div>
+                  <div class="sm-label">Link Clicks</div>
+                </div>
+                <div class="sm-metric">
+                  <div class="sm-val">$0.29</div>
+                  <div class="sm-label">Cost / Click</div>
+                </div>
+                <div class="sm-metric">
+                  <div class="sm-val amber">$236</div>
+                  <div class="sm-label">Spent</div>
+                </div>
+              </div>
+              <div class="social-sub-stats">29,312 People Reached · 54,188 Impressions · Best of 2 ad posts</div>
+              <div class="social-card-footer">
+                <a href="https://www.tanner.org/the-scope/connect-your-familys-accounts-in-tanner-mychart" class="card-link" target="_blank" rel="noopener">
+                  Read Blog
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                </a>
+                <a href="https://www.facebook.com/tannerhealth/posts/tired-of-missing-refills-on-your-prescription-medicationstanner-mychart-lets-you/1487410626274116/" class="card-link" target="_blank" rel="noopener">
+                  View Post
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                </a>
+                <a href="https://www.facebook.com/100050155793908/posts/pfbid0MHJ4WcFujrEiBzXZP3AJD1V7zTkxWdgJrjeHAqYroJFkZ8KN3JdtEW31TDKw2vLhl/" class="card-link" target="_blank" rel="noopener">
+                  View Post 2
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Campaign 2: View Test Results Instantly — Images 3 & 4 (IMG_6183, IMG_6184): 2,751 clicks, $0.31/click, $851.82 -->
+          <div class="social-card">
+            <div class="social-card-img">
+              <div class="social-img-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>Add Campaign Image</span>
+              </div>
+              <span class="card-type-badge">Blog + Paid Ad</span>
+            </div>
+            <div class="social-card-body">
+              <div class="social-campaign-label">MyChart Campaign · Traffic</div>
+              <div class="social-card-title">View Test Results Instantly in Tanner MyChart</div>
+              <div class="social-metrics-strip">
+                <div class="sm-metric">
+                  <div class="sm-val cyan">2,751</div>
+                  <div class="sm-label">Link Clicks</div>
+                </div>
+                <div class="sm-metric">
+                  <div class="sm-val">$0.31</div>
+                  <div class="sm-label">Cost / Click</div>
+                </div>
+                <div class="sm-metric">
+                  <div class="sm-val amber">$851</div>
+                  <div class="sm-label">Spent</div>
+                </div>
+              </div>
+              <div class="social-sub-stats">179,154 Views · 2,814 Post Engagements · 15 days</div>
+              <div class="social-card-footer">
+                <a href="https://www.tanner.org/the-scope/View-Test-Results-Instantly-in-Tanner-MyChart" class="card-link" target="_blank" rel="noopener">
+                  Read Blog
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                </a>
+                <a href="https://www.facebook.com/tannerhealth/posts/pfbid02RB8D2383xGVnbCxE5gYd4QrZc6kcKLRjhZMtq6REc8EXPAcL2VH4fYeFZQmh8ffbl" class="card-link" target="_blank" rel="noopener">
+                  View Post 1
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                </a>
+                <a href="https://www.facebook.com/100050155793908/posts/pfbid0X6wBDixN7ic6XrXKXD1qX21r3iApRbJziDbHW3ggMSwfna9ixLZXg7NFhqvurZ9Fl/" class="card-link" target="_blank" rel="noopener">
+                  View Post 2
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Campaign 3: Managing a Loved One's Healthcare — Images 1,2,7,8: 1,086 clicks, 652 LPVs, $849.21 -->
+          <div class="social-card">
+            <div class="social-card-img">
+              <img src="/photos/A blog graphic from the Tanner MyChart marketing campaign.jpg" alt="Tanner MyChart campaign graphic" loading="lazy">
+              <span class="card-type-badge">Blog + Paid Ad</span>
+            </div>
+            <div class="social-card-body">
+              <div class="social-campaign-label">MyChart Campaign · Traffic</div>
+              <div class="social-card-title">Tanner MyChart Makes Managing a Loved One's Healthcare Easy</div>
+              <div class="social-metrics-strip">
+                <div class="sm-metric">
+                  <div class="sm-val cyan">1,086</div>
+                  <div class="sm-label">Link Clicks</div>
+                </div>
+                <div class="sm-metric">
+                  <div class="sm-val green">652</div>
+                  <div class="sm-label">Landing Page Views</div>
+                </div>
+                <div class="sm-metric">
+                  <div class="sm-val amber">$849</div>
+                  <div class="sm-label">Spent</div>
+                </div>
+              </div>
+              <div class="social-sub-stats">101,204 Views · 1,188 Engagements · $1.30/LPV · 14 days</div>
+              <div class="social-card-footer">
+                <a href="https://www.tanner.org/the-scope/Tanner-MyChart-Makes-Managing-a-Loved-Ones-Healthcare-Easy" class="card-link" target="_blank" rel="noopener">
+                  Read Blog
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Campaign 4: Video — Images 5 & 6 (IMG_6187, IMG_6188): 33,376 ThruPlays, 23,626 reached, $847.98 -->
+          <div class="social-card">
+            <div class="social-card-img">
+              <div class="social-img-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+                <span>Add Campaign Image</span>
+              </div>
+              <span class="card-type-badge">Video + Paid Ad</span>
+            </div>
+            <div class="social-card-body">
+              <div class="social-campaign-label">MyChart Campaign · Engagement</div>
+              <div class="social-card-title">Tanner MyChart — "Learn How You Can Check In Early" Video Campaign</div>
+              <div class="social-metrics-strip">
+                <div class="sm-metric">
+                  <div class="sm-val cyan">33,376</div>
+                  <div class="sm-label">ThruPlays</div>
+                </div>
+                <div class="sm-metric">
+                  <div class="sm-val">$0.025</div>
+                  <div class="sm-label">Cost / Play</div>
+                </div>
+                <div class="sm-metric">
+                  <div class="sm-val amber">$847</div>
+                  <div class="sm-label">Spent</div>
+                </div>
+              </div>
+              <div class="social-sub-stats">23,626 People Reached · 89,760 Impressions · Feb 13–27, 2026</div>
+              <div class="social-card-footer">
+                <a href="https://www.facebook.com/share/v/1LazwawFqQ/" class="card-link" target="_blank" rel="noopener">
+                  View Video 1
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                </a>
+                <a href="https://www.facebook.com/share/1BKFdLmwXX/" class="card-link" target="_blank" rel="noopener">
+                  View Video 2
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- New card: additional post — inline image carousel -->
+          <div class="social-card">
+            <div class="social-card-img" style="position:relative; overflow:hidden;">
+              <div class="sc-track" id="sc-mc-post">
+                <div class="sc-slides-wrap" id="sc-mc-post-slides">
+                  <!-- Slide 1 -->
+                  <div class="sc-slide">
+                    <div class="social-img-placeholder">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                      <span>Add Image 1</span>
+                    </div>
+                  </div>
+                  <!-- Slide 2 -->
+                  <div class="sc-slide">
+                    <div class="social-img-placeholder">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                      <span>Add Image 2</span>
+                    </div>
+                  </div>
+                  <!-- Slide 3 -->
+                  <div class="sc-slide">
+                    <div class="social-img-placeholder">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                      <span>Add Image 3</span>
+                    </div>
+                  </div>
+                  <!-- Add more sc-slide blocks as needed, e.g.:
+                  <div class="sc-slide"><img src="/photos/your-image.jpg" alt="Campaign image" loading="lazy"></div>
+                  -->
+                </div>
+                <button class="sc-btn sc-prev-btn" onclick="scMove('sc-mc-post',-1)" aria-label="Previous">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+                </button>
+                <button class="sc-btn sc-next-btn" onclick="scMove('sc-mc-post',1)" aria-label="Next">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </button>
+                <div class="sc-dots-wrap" id="sc-mc-post-dots"></div>
+                <div class="sc-counter" id="sc-mc-post-counter">1 / 3</div>
+              </div>
+              <span class="card-type-badge">Paid Social</span>
+            </div>
+            <div class="social-card-body">
+              <div class="social-campaign-label">MyChart Campaign — Update Title</div>
+              <div class="social-card-title">Tanner MyChart Campaign Post</div>
+              <div class="social-metrics-strip">
+                <div class="sm-metric">
+                  <div class="sm-val" style="color:var(--muted);font-size:.85rem;">[ — ]</div>
+                  <div class="sm-label">Link Clicks</div>
+                </div>
+                <div class="sm-metric">
+                  <div class="sm-val" style="color:var(--muted);font-size:.85rem;">[ — ]</div>
+                  <div class="sm-label">Cost / Click</div>
+                </div>
+                <div class="sm-metric">
+                  <div class="sm-val" style="color:var(--muted);font-size:.85rem;">[ — ]</div>
+                  <div class="sm-label">Spent</div>
+                </div>
+              </div>
+              <div class="social-sub-stats">Add performance data from Facebook Ads Manager</div>
+              <div class="social-card-footer">
+                <a href="https://www.facebook.com/100050155793908/posts/pfbid0HWDi3Hu7GeFtrbX73wQjUuxZQFN5a8to4ZXuVLd87z4mjENdVDo4UUn56ciGC7cQl/" class="card-link" target="_blank" rel="noopener">
+                  View Post
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /social-cards-grid -->
       </div>
     </div>
-
-    <!-- CARD 3 -->
-    <div class="card" data-category="copy">
-      <div class="card-img">
-        <img src="/photos/External disaster drill at Tanner Medical Center Villa Rica.jpg" alt="Moulauged students participate in an external disastr drill at Tanner Medical Center/Villa Rica">
-        <div class="card-overlay"></div>
-        <span class="card-type-badge">Crisis Communications</span>
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">Crisis Communications</h3>
-        <p class="card-desc">From weather disasters to active shooters, when an emergency strikes or the unthinkable happens, hospitals have to be prepared to respond. To do so, Tanner Health hospitals and patient care teams conduct drills alongside law enforcement, fire departments and emergency medical services to practice how they will operate, communicate and coordinate. During these crisis trainings, I served as a public information officer responsible for coordinating the communications plan in a real-world situation. While these are only drills, I also coverd the story of how even the best communities have to be prepared for the worst events to ensure the safety of its residents.</p>
-        <div class="card-tags">
-          <span class="tag">Crisis Comms</span>
-          <span class="tag">News Writing</span>
-          <span class="tag">Social Media</span>
-        </div>
-        <div class="card-footer">
-          <a href="https://www.tanner.org/news/tanner-and-randolph-county-hosts-disaster-training-exercise-on-dec-11" class="card-link" target="_blank" rel="noopener">
-            Read the Release
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-          </a>
-          <a href="https://www.facebook.com/tannermedicalcentervillarica/posts/this-morning-we-conducted-a-routine-mass-casualty-drill-at-tanner-medical-center/1207748341368838/" class="card-link" target="_blank" rel="noopener">
-            View Post
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
-
-    <!-- CARD 4 -->
-    <div class="card" data-category="copy">
-      <div class="card-img">
-          <img src="/photos/A blog graphic from the Tanner MyChart marketing campaign.jpg" alt="A graphic from Tanner MyChart blog campaign">
-        <div class="card-overlay"></div>
-        <span class="card-type-badge">Digital Campaign</span>
-      </div>
-      <div class="card-body">
-        <h3 class="card-title">MyChart Digital Campaign</h3>
-        <p class="card-desc">Health care is evloving to provide more ways for us to stay on top of our health and connected to the information we need to care for ourselves and loved ones. When Tanner Health deployed MyChart, a feature-rich patient portal platform, it put the power to manage your health in the palm of your hand. To help increase patient engagement, usages and downloads, I wrote blog and social media campaigns to help promote how to enroll and utilize the platform for our patients and care teams.</p>
-        <div class="card-tags">
-          <span class="tag">Paid Social</span>
-          <span class="tag">Blog Campaigns</span>
-          <span class="tag">Marketing/Advertising</span>
-          <span class="tag">Content Strategy</span>
-        </div>
-        <div class="card-footer">
-          <a href="https://www.tanner.org/the-scope/view-test-results-instantly-in-tanner-mychart" class="card-link" target="_blank" rel="noopener">
-            Read the Blog
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-          </a>
-          <a href="https://www.facebook.com/tannerhealth/posts/pfbid02RB8D2383xGVnbCxE5gYd4QrZc6kcKLRjhZMtq6REc8EXPAcL2VH4fYeFZQmh8ffbl" class="card-link" target="_blank" rel="noopener">
-            View Post
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-          </a>
-        </div>
-      </div>
-    </div>
+  </div><!-- /campaign -->
 
 
-  </div><!-- /cards-grid -->
-</div>
-
-  </section>
-
-  <!-- ─── RESUME ─── -->
-
+  <!-- ─── RESUME ─────────────────────────────────────────────────── -->
   <section id="resume">
     <div class="container">
       <div class="resume-header reveal">
@@ -1035,151 +1512,164 @@ footer {
         <p class="resume-sub">Nearly a decade of industry experience and counting...</p>
       </div>
 
-  <div class="resume-grid">
-    <!-- LEFT: Experience -->
-    <div class="reveal">
-      <div class="resume-col-title">Experience</div>
-      <div class="timeline">
-        <div class="tl-item">
-          <div class="tl-dot current"></div>
-          <div class="tl-year">Dec. 2022 — Present</div>
-          <div class="tl-role">Content Strategist</div>
-          <div class="tl-company">Tanner Health · Carrollton, GA</div>
-          <div class="tl-desc">Much of my work is rooted in developing campaign strategy, writing SEO-driven web copy, operating CMSs and content platorms, measuring social campaign performance and dicphering analytics to deploying SEO to ensure sure every piece of content is created with the audience in mind.</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-year">March 2017 — Dec. 2022</div>
-          <div class="tl-role">Communications Coordinator</div>
-          <div class="tl-company">Tanner Health · Carrollton, GA</div>
-          <div class="tl-desc">For nearly six years, I coordinated and wrote internal and external communications and campaigns tactics across print and digital channels, including patient- and team-focused newsletters, e-blasts, social media posts, web copy, print collateral, billboards, etc.</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-year">Sept. 2016 — March 2017</div>
-          <div class="tl-role">Ad Sales Intern</div>
-          <div class="tl-company">Scripps Networks Interactive · Atlanta</div>
-          <div class="tl-desc">This internship taught me how television and media advertising work from the inside. I worked on teams with Travel Channel, HGTV and Great Amaerican Family — learning how brands buy audiences and how storytelling drives commercial decisions.</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-year">June 2014 — Aug. 2014</div>
-          <div class="tl-role">Communications Intern</div>
-          <div class="tl-company">Arby's Restaurant Group · Atlanta</div>
-          <div class="tl-desc">As my first experience in corporate communications and public relations, I learned the power of brand engagement and the value of digital media in the QSR industry. Here, I gained deep appreciation for how large brands monitor and maintain engagement, communications and digital marketing.</div>
-        </div>
-        <div class="tl-item">
-          <div class="tl-dot"></div>
-          <div class="tl-year">Nov. 2013 — April 2014</div>
-          <div class="tl-role">Marketing &amp; Public Relations Intern</div>
-          <div class="tl-company">Tanner Health · Carrollton, GA</div>
-          <div class="tl-desc">My career at Tanner Health began as a student intern, and I quickly learned how even the smallest campaigns can have the biggest impacts on an audience. Healthcare communications taught me how copy can be empathetic and purposeful.</div>
-        </div>
-      </div>
+      <div class="resume-grid">
+        <!-- LEFT: Experience + Education + Certs -->
+        <div class="reveal">
+          <div class="resume-col-title">Experience</div>
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-dot current"></div>
+              <div class="tl-year">Dec. 2022 — Present</div>
+              <div class="tl-role">Content Strategist</div>
+              <div class="tl-company">Tanner Health · Carrollton, GA</div>
+              <div class="tl-desc">Develop and execute multi-channel content strategies across web, social, email and print. Manage campaign performance, SEO-driven copywriting, CMS operations and analytics to ensure every piece of content reaches the right audience with the right message.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-year">March 2017 — Dec. 2022</div>
+              <div class="tl-role">Communications Coordinator</div>
+              <div class="tl-company">Tanner Health · Carrollton, GA</div>
+              <div class="tl-desc">Coordinated and wrote internal and external communications campaigns across print and digital channels, including newsletters, e-blasts, social media, web copy, print collateral and billboards.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-year">Sept. 2016 — March 2017</div>
+              <div class="tl-role">Ad Sales Intern</div>
+              <div class="tl-company">Scripps Networks Interactive · Atlanta</div>
+              <div class="tl-desc">Worked with Travel Channel, HGTV and Great American Family learning how brands buy audiences and how storytelling drives commercial media decisions from the inside.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-year">June 2014 — Aug. 2014</div>
+              <div class="tl-role">Communications Intern</div>
+              <div class="tl-company">Arby's Restaurant Group · Atlanta</div>
+              <div class="tl-desc">Gained hands-on experience in corporate communications and public relations within the QSR industry — learning how large brands monitor and maintain engagement across digital marketing channels.</div>
+            </div>
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-year">Nov. 2013 — April 2014</div>
+              <div class="tl-role">Marketing &amp; Public Relations Intern</div>
+              <div class="tl-company">Tanner Health · Carrollton, GA</div>
+              <div class="tl-desc">My career at Tanner began as a student intern, where I learned how even the smallest campaigns can have the biggest impacts — and how healthcare communications demands both empathy and precision.</div>
+            </div>
+          </div>
 
-      <div class="resume-col-title mt">Education</div>
-      <div class="edu-card">
-        <div class="edu-degree">BA, Communications &amp; Journalism</div>
-        <div class="edu-school">University of West Georgia</div>
-        <div class="edu-year">2011 — 2016 · AMA · PRSSA</div>
-      </div>
+          <div class="resume-col-title mt">Education</div>
+          <div class="edu-card">
+            <div class="edu-degree">BA, Communications &amp; Journalism</div>
+            <div class="edu-school">University of West Georgia</div>
+            <div class="edu-year">2011 — 2016 · AMA · PRSSA</div>
+          </div>
 
-      <div class="resume-col-title mt">Certifications</div>
-      <div class="edu-card">
-        <div class="edu-degree">ITIL v4 Foundation</div>
-        <div class="edu-school">AXELOS Global Best Practice</div>
-        <div class="edu-year">Issued June 2024 · Expires July 2026</div>
-      </div>
-      <div class="edu-card">
-        <div class="edu-degree">CompTIA Project+</div>
-        <div class="edu-school">CompTIA</div>
-        <div class="edu-year">Issued March 2023</div>
-      </div>
-      <div class="edu-card">
-        <div class="edu-degree">CompTIA A+</div>
-        <div class="edu-school">CompTIA</div>
-        <div class="edu-year">Issued July 2022</div>
+          <div class="resume-col-title mt">Certifications</div>
+          <div class="edu-card">
+            <div class="edu-degree">ITIL v4 Foundation</div>
+            <div class="edu-school">AXELOS Global Best Practice</div>
+            <div class="edu-year">Issued June 2024 · Expires July 2026</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-degree">CompTIA Project+</div>
+            <div class="edu-school">CompTIA</div>
+            <div class="edu-year">Issued March 2023</div>
+          </div>
+          <div class="edu-card">
+            <div class="edu-degree">CompTIA A+</div>
+            <div class="edu-school">CompTIA</div>
+            <div class="edu-year">Issued July 2022</div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Skills (consolidated — includes pills moved from About) -->
+        <div class="reveal">
+          <div class="resume-col-title">Core Skills</div>
+
+          <div class="skill-category">
+            <div class="skill-category-title">Content &amp; Strategy</div>
+            <div class="skill-pills">
+              <span class="skill-pill-item">Content Strategy</span>
+              <span class="skill-pill-item">Content Management</span>
+              <span class="skill-pill-item">Strategic Communications</span>
+              <span class="skill-pill-item">Campaign Planning</span>
+              <span class="skill-pill-item">Creative Briefs</span>
+              <span class="skill-pill-item">Audience Development</span>
+              <span class="skill-pill-item">Cross-Channel Strategy</span>
+              <span class="skill-pill-item">Internal Communications</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-category-title">Copywriting &amp; Content</div>
+            <div class="skill-pills">
+              <span class="skill-pill-item">Copywriting</span>
+              <span class="skill-pill-item">SEO Copywriting</span>
+              <span class="skill-pill-item">Keyword Research</span>
+              <span class="skill-pill-item">Press Releases</span>
+              <span class="skill-pill-item">Blog Campaigns</span>
+              <span class="skill-pill-item">Email Campaigns</span>
+              <span class="skill-pill-item">Web Content Management</span>
+              <span class="skill-pill-item">Social Media Copy</span>
+              <span class="skill-pill-item">Press &amp; Print Materials</span>
+              <span class="skill-pill-item">Video Scripting</span>
+              <span class="skill-pill-item">Interviewing &amp; Scripting</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-category-title">Project Management &amp; Operations</div>
+            <div class="skill-pills">
+              <span class="skill-pill-item">Project Management</span>
+              <span class="skill-pill-item">Campaign Coordination</span>
+              <span class="skill-pill-item">Cross-Functional Teams</span>
+              <span class="skill-pill-item">ITIL v4 Service Management</span>
+              <span class="skill-pill-item">Vendor Coordination</span>
+              <span class="skill-pill-item">Editorial Calendaring</span>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <div class="skill-category-title">Digital, Analytics &amp; Technical</div>
+            <div class="skill-pills">
+              <span class="skill-pill-item">Web Analytics</span>
+              <span class="skill-pill-item">Campaign Analytics</span>
+              <span class="skill-pill-item">Digital Marketing</span>
+              <span class="skill-pill-item">Social Media Marketing</span>
+              <span class="skill-pill-item">Marketing Strategy</span>
+              <span class="skill-pill-item">Search Engine Optimization</span>
+              <span class="skill-pill-item">Web Design</span>
+              <span class="skill-pill-item">HTML, CSS &amp; JavaScript</span>
+              <span class="skill-pill-item">Photography</span>
+              <span class="skill-pill-item">Videography</span>
+            </div>
+          </div>
+
+          <div class="resume-col-title mt">Tools &amp; Platforms</div>
+          <div class="tools-grid">
+            <span class="tool-chip">CMS Platforms</span>
+            <span class="tool-chip">Google Analytics</span>
+            <span class="tool-chip">Facebook Ads Manager</span>
+            <span class="tool-chip">Email Marketing Platforms</span>
+            <span class="tool-chip">Social Media Management</span>
+            <span class="tool-chip">SEO Tools</span>
+            <span class="tool-chip">Canva</span>
+            <span class="tool-chip">Adobe Suite</span>
+            <span class="tool-chip">HTML / CSS</span>
+            <span class="tool-chip">JavaScript</span>
+            <span class="tool-chip">Project Management Tools</span>
+            <span class="tool-chip">CRM Tools</span>
+          </div>
+        </div>
+      </div><!-- /resume-grid -->
+
+      <div class="resume-download reveal">
+        <a href="your-resume.pdf" download class="btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download Full Resume
+        </a>
       </div>
     </div>
-
-    <!-- RIGHT: Skills -->
-    <div class="reveal">
-      <div class="resume-col-title">Core Skills</div>
-
-      <div class="skill-category">
-        <div class="skill-category-title">Content &amp; Strategy</div>
-        <div class="skill-pills">
-          <span class="skill-pill-item">Content Strategy</span>
-          <span class="skill-pill-item">Content Management</span>
-          <span class="skill-pill-item">Strategic Communications</span>
-          <span class="skill-pill-item">Creative Briefs</span>
-          <span class="skill-pill-item">Audience Development</span>
-          <span class="skill-pill-item">Cross-Channel Strategy</span>
-          <span class="skill-pill-item">Internal Communications</span>
-        </div>
-      </div>
-
-      <div class="skill-category">
-        <div class="skill-category-title">Copywriting &amp; Content</div>
-        <div class="skill-pills">
-          <span class="skill-pill-item">SEO Copywriting</span>
-          <span class="skill-pill-item">Keyword Research</span>
-          <span class="skill-pill-item">Press Releases</span>
-          <span class="skill-pill-item">Blog Campaigns</span>
-          <span class="skill-pill-item">Email Campaigns</span>
-          <span class="skill-pill-item">Web Content Management</span>
-          <span class="skill-pill-item">Social Media Copy</span>
-          <span class="skill-pill-item">Interviewing and Scripting</span>
-        </div>
-      </div>
-
-      <div class="skill-category">
-        <div class="skill-category-title">Digital &amp; Technical</div>
-        <div class="skill-pills">
-          <span class="skill-pill-item">Web Analytics</span>
-          <span class="skill-pill-item">Web Design</span>
-          <span class="skill-pill-item">Marketing Strategy</span>
-          <span class="skill-pill-item">Digital Marketing</span>
-          <span class="skill-pill-item">Social Media Marketing</span>
-          <span class="skill-pill-item">HTML, CSS &amp; JavaScript</span>
-          <span class="skill-pill-item">JavaScript</span>
-          <span class="skill-pill-item">Project Management</span>
-          <span class="skill-pill-item">Search Engine Optimization</span>
-          <span class="skill-pill-item">Computer and Mobile Device Repair</span>
-          <span class="skill-pill-item">Computer system configuration</span>
-        </div>
-      </div>
-
-      <div class="resume-col-title mt">Tools &amp; Platforms</div>
-      <div class="tools-grid">
-        <span class="tool-chip">CMS Platforms</span>
-        <span class="tool-chip">Google Analytics</span>
-        <span class="tool-chip">CRM Tools</span>
-        <span class="tool-chip">Email Marketing Platforms</span>
-        <span class="tool-chip">Social Media Management</span>
-        <span class="tool-chip">SEO Tools</span>
-        <span class="tool-chip">Canva</span>
-        <span class="tool-chip">Adobe Suite</span>
-        <span class="tool-chip">HTML / CSS</span>
-        <span class="tool-chip">JavaScript</span>
-        <span class="tool-chip">Facebook Ads Manager</span>
-        <span class="tool-chip">Project Management Tools</span>
-      </div>
-    </div>
-  </div><!-- /resume-grid -->
-
-  <div class="resume-download reveal">
-    <a href="your-resume.pdf" download class="btn-primary">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-      Download Full Resume
-    </a>
-  </div>
-</div>
-
   </section>
 
-  <!-- ─── CONTACT ─── -->
-
+  <!-- ─── CONTACT ─────────────────────────────────────────────────── -->
   <section id="contact">
     <div class="container">
       <div class="contact-inner reveal">
@@ -1189,7 +1679,7 @@ footer {
         <div class="contact-links">
           <a href="mailto:wtraylowery@gmail.com" class="contact-link-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            your@email.com
+            wtraylowery@gmail.com
           </a>
           <a href="https://linkedin.com/in/tray-lowery-7757b479" target="_blank" rel="noopener" class="contact-link-item">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
@@ -1200,8 +1690,7 @@ footer {
     </div>
   </section>
 
-  <!-- ─── FOOTER ─── -->
-
+  <!-- ─── FOOTER ─────────────────────────────────────────────────── -->
   <footer>
     <div class="container">
       <div class="footer-inner">
@@ -1211,10 +1700,41 @@ footer {
     </div>
   </footer>
 
-  <!-- ─── JS ─── -->
+  <!-- ─── PHOTO CAROUSEL MODAL ──────────────────────────────────── -->
+  <!-- Surgery Without Borders photo gallery -->
+  <div class="photo-modal" id="photoModal" role="dialog" aria-label="Photo Gallery">
+    <div class="photo-modal-inner">
+      <button class="photo-modal-close" onclick="closePhotoModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Close Gallery
+      </button>
+      <div class="photo-modal-slides">
+        <!-- Slide 1: Main surgery photo -->
+        <div class="photo-slide active" data-caption="Dr. Espinel at the da Vinci 5 Telepresence Console">
+          <img src="/photos/Dr.Espinel on DaVinci5 Telepresence Console.jpeg" alt="Dr. José Espinel operates the da Vinci 5 robotic surgical system" loading="lazy">
+        </div>
+        <!-- Add additional photos below — copy this block and update src/alt/data-caption -->
+        <!-- <div class="photo-slide" data-caption="Caption for photo 2">
+          <img src="/photos/your-photo-2.jpg" alt="Alt text" loading="lazy">
+        </div> -->
+        <button class="photo-modal-nav photo-modal-prev" onclick="changeSlide(-1)" aria-label="Previous photo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="photo-modal-nav photo-modal-next" onclick="changeSlide(1)" aria-label="Next photo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div class="photo-modal-footer">
+        <div class="photo-modal-caption" id="photoCaption">Dr. Espinel at the da Vinci 5 Telepresence Console</div>
+        <div class="photo-modal-dots" id="photoDots"></div>
+        <div class="photo-modal-counter" id="photoCounter">1 / 1</div>
+      </div>
+    </div>
+  </div>
 
+  <!-- ─── JAVASCRIPT ─────────────────────────────────────────────── -->
   <script>
-    /* ─── Intersection Observer: reveal animations ─── */
+    /* ── Intersection Observer: .reveal ── */
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1222,23 +1742,140 @@ footer {
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
-
+    }, { threshold: 0.1 });
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    /* ─── Card stagger reveal ─── */
+    /* ── Card + Media Card + Dash Card stagger reveal ── */
     const cardObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
+      entries.forEach(entry => {
         if (entry.isIntersecting) {
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, Array.from(document.querySelectorAll('.card')).indexOf(entry.target) % 3 * 90);
+          const allCards = [...document.querySelectorAll('.card, .media-card, .dash-card')];
+          const idx = allCards.indexOf(entry.target) % 3;
+          setTimeout(() => entry.target.classList.add('visible'), idx * 90);
           cardObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.card, .media-card, .social-card').forEach(el => cardObserver.observe(el));
 
-    document.querySelectorAll('.card').forEach(card => cardObserver.observe(card));
+    /* ── Photo Modal ── */
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.photo-slide');
+    const captionEl = document.getElementById('photoCaption');
+    const counterEl = document.getElementById('photoCounter');
+    const dotsEl = document.getElementById('photoDots');
+
+    function buildDots() {
+      dotsEl.innerHTML = '';
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'photo-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Photo ${i + 1}`);
+        dot.onclick = () => goToSlide(i);
+        dotsEl.appendChild(dot);
+      });
+    }
+
+    function updateModal() {
+      slides.forEach((s, i) => s.classList.toggle('active', i === currentSlide));
+      const caption = slides[currentSlide].dataset.caption || '';
+      if (captionEl) captionEl.textContent = caption;
+      if (counterEl) counterEl.textContent = `${currentSlide + 1} / ${slides.length}`;
+      document.querySelectorAll('.photo-dot').forEach((d, i) => d.classList.toggle('active', i === currentSlide));
+      // Hide nav arrows if only 1 slide
+      document.querySelectorAll('.photo-modal-nav').forEach(n => {
+        n.style.display = slides.length > 1 ? 'flex' : 'none';
+      });
+    }
+
+    function goToSlide(n) {
+      currentSlide = n;
+      updateModal();
+    }
+
+    function changeSlide(dir) {
+      currentSlide = (currentSlide + dir + slides.length) % slides.length;
+      updateModal();
+    }
+
+    function openPhotoModal() {
+      buildDots();
+      updateModal();
+      document.getElementById('photoModal').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePhotoModal() {
+      document.getElementById('photoModal').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    // Close on backdrop click
+    document.getElementById('photoModal').addEventListener('click', function(e) {
+      if (e.target === this) closePhotoModal();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closePhotoModal();
+      if (e.key === 'ArrowLeft') changeSlide(-1);
+      if (e.key === 'ArrowRight') changeSlide(1);
+    });
+    /* ── Inline Social Card Carousel ── */
+    const scState = {};
+
+    function scInit(id) {
+      const wrap = document.getElementById(id + '-slides');
+      const dotsEl = document.getElementById(id + '-dots');
+      const counterEl = document.getElementById(id + '-counter');
+      if (!wrap) return;
+      const slides = wrap.querySelectorAll('.sc-slide');
+      const total = slides.length;
+      scState[id] = { current: 0, total };
+
+      // Build dots
+      dotsEl.innerHTML = '';
+      slides.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.className = 'sc-dot-btn' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', `Image ${i + 1}`);
+        d.onclick = (e) => { e.stopPropagation(); scGoTo(id, i); };
+        dotsEl.appendChild(d);
+      });
+
+      // Hide nav if 1 slide
+      const track = document.getElementById(id);
+      if (total <= 1) {
+        track.querySelectorAll('.sc-btn').forEach(b => b.style.display = 'none');
+        dotsEl.style.display = 'none';
+        if (counterEl) counterEl.style.display = 'none';
+      }
+      scGoTo(id, 0);
+    }
+
+    function scGoTo(id, n) {
+      const state = scState[id];
+      if (!state) return;
+      const wrap = document.getElementById(id + '-slides');
+      const dotsEl = document.getElementById(id + '-dots');
+      const counterEl = document.getElementById(id + '-counter');
+      state.current = (n + state.total) % state.total;
+      wrap.style.transform = `translateX(-${state.current * 100}%)`;
+      dotsEl.querySelectorAll('.sc-dot-btn').forEach((d, i) => d.classList.toggle('active', i === state.current));
+      if (counterEl) counterEl.textContent = `${state.current + 1} / ${state.total}`;
+    }
+
+    function scMove(id, dir) {
+      const state = scState[id];
+      if (!state) return;
+      scGoTo(id, state.current + dir);
+    }
+
+    // Initialize all carousels on page load
+    document.querySelectorAll('[id$="-slides"]').forEach(el => {
+      const id = el.id.replace('-slides', '');
+      scInit(id);
+    });
 
   </script>
 
