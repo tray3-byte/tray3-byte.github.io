@@ -722,6 +722,28 @@
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* ─── PHOTO THUMBNAIL STRIP ─────────────────────────────────── */
+    .photo-thumbs {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: .5rem; margin-top: 1.25rem; margin-bottom: 1.5rem;
+    }
+    .photo-thumb-btn {
+      position: relative; aspect-ratio: 4/3; overflow: hidden;
+      border-radius: 6px; border: 1.5px solid var(--border);
+      background: var(--bg3); cursor: pointer; padding: 0;
+      transition: border-color .2s, transform .2s;
+    }
+    .photo-thumb-btn:hover { border-color: var(--border2); transform: translateY(-2px); }
+    .photo-thumb-btn img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-thumb-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,200,255,.08);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .2s;
+    }
+    .photo-thumb-btn:hover .photo-thumb-overlay { opacity: 1; }
+    .photo-thumb-overlay svg { width: 18px; height: 18px; color: var(--cyan); }
+
     /* ─── SOCIAL PERFORMANCE CARDS ──────────────────────────────── */
     .social-cards-grid {
       display: grid;
@@ -936,6 +958,25 @@
                 <span class="tag">News Writing</span>
                 <span class="tag">Photography</span>
                 <span class="tag">Web Content</span>
+              </div>
+              <!-- Photo thumbnail strip — click any to open gallery at that slide -->
+              <div class="photo-thumbs">
+                <button class="photo-thumb-btn" onclick="openPhotoModal(0)" title="Dr. Espinel at the Telepresence Console">
+                  <img src="/photos/Dr.Espinel on DaVinci5 Telepresence Console.jpg" alt="Dr. Espinel at the da Vinci 5 Telepresence Console" loading="lazy">
+                  <div class="photo-thumb-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                </button>
+                <button class="photo-thumb-btn" onclick="openPhotoModal(1)" title="Dr. Espinel with Colleagues on the Monitor">
+                  <img src="/photos/Dr.Espinel and Colleagues on DaVinci5 Telepresence Monitor.jpg" alt="Dr. Espinel and colleagues on the da Vinci 5 Telepresence Monitor" loading="lazy">
+                  <div class="photo-thumb-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                </button>
+                <button class="photo-thumb-btn" onclick="openPhotoModal(2)" title="Dr. Espinel Performing Surgery">
+                  <img src="/photos/Dr.Espinel Performing DaVinci5 Telepresence Surgery.jpg" alt="Dr. Espinel performing the da Vinci 5 telepresence surgery" loading="lazy">
+                  <div class="photo-thumb-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                </button>
+                <button class="photo-thumb-btn" onclick="openPhotoModal(3)" title="Dr. Espinel Speaking on Monitor">
+                  <img src="/photos/Dr.Espinel Speaking on DaVinci5 Telepresence Monitor.jpg" alt="Dr. Espinel speaking on the da Vinci 5 Telepresence Monitor" loading="lazy">
+                  <div class="photo-thumb-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                </button>
               </div>
               <div class="card-footer">
                 <a href="https://www.tanner.org/news/surgery-without-borders-tanners-robotic-program-goes-international" class="card-link" target="_blank" rel="noopener">
@@ -1169,10 +1210,7 @@
           <!-- FOX5: Snakebite -->
           <div class="media-card">
             <div class="media-thumb">
-              <div class="social-img-placeholder">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="3"/></svg>
-                <span>Add Coverage Photo</span>
-              </div>
+              <img src="/photos/News story covering unusual snake bite _ Fox5.png" alt="Fox5 Atlanta news coverage — venomous snakebite story" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div class="media-body">
               <div class="media-outlet">Fox5 Atlanta · Broadcast Feature</div>
@@ -1195,10 +1233,7 @@
           <!-- FOX5: IV Fluid Shortage -->
           <div class="media-card">
             <div class="media-thumb">
-              <div class="social-img-placeholder">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="3"/></svg>
-                <span>Add Coverage Photo</span>
-              </div>
+              <img src="/photos/News story covering IV fluid shortage _ Fox5.png" alt="Fox5 Atlanta news coverage — IV fluid shortage story" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
             </div>
             <div class="media-body">
               <div class="media-outlet">Fox5 Atlanta · Broadcast Feature</div>
@@ -1274,10 +1309,7 @@
           <!-- Campaign 1: Connect Your Family's Accounts — Images 1 & 2 (IMG_6198, IMG_6199): best post = 823 clicks, $0.29/click, $236.19, 29,312 reached -->
           <div class="social-card">
             <div class="social-card-img">
-              <div class="social-img-placeholder">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                <span>Add Campaign Image</span>
-              </div>
+              <img src="/photos/Connect Your Family's Accounts in Tanner MyChart.png" alt="Connect Your Family's Accounts in Tanner MyChart campaign graphic" loading="lazy">
               <span class="card-type-badge">Blog + Paid Ad</span>
             </div>
             <div class="social-card-body">
@@ -1318,10 +1350,7 @@
           <!-- Campaign 2: View Test Results Instantly — Images 3 & 4 (IMG_6183, IMG_6184): 2,751 clicks, $0.31/click, $851.82 -->
           <div class="social-card">
             <div class="social-card-img">
-              <div class="social-img-placeholder">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                <span>Add Campaign Image</span>
-              </div>
+              <img src="/photos/View Test Results Instantly in Tanner MyChart.jpg" alt="View Test Results Instantly in Tanner MyChart campaign graphic" loading="lazy">
               <span class="card-type-badge">Blog + Paid Ad</span>
             </div>
             <div class="social-card-body">
@@ -1395,10 +1424,7 @@
           <!-- Campaign 4: Video — Images 5 & 6 (IMG_6187, IMG_6188): 33,376 ThruPlays, 23,626 reached, $847.98 -->
           <div class="social-card">
             <div class="social-card-img">
-              <div class="social-img-placeholder">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-                <span>Add Campaign Image</span>
-              </div>
+              <img src="/photos/Learn How You Can Check In Early Video Campaign.png" alt="Learn How You Can Check In Early video campaign graphic" loading="lazy">
               <span class="card-type-badge">Video + Paid Ad</span>
             </div>
             <div class="social-card-body">
@@ -1439,10 +1465,7 @@
                 <div class="sc-slides-wrap" id="sc-mc-post-slides">
                   <!-- Slide 1 -->
                   <div class="sc-slide">
-                    <div class="social-img-placeholder">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                      <span>Add Image 1</span>
-                    </div>
+                    <img src="/photos/Tanner MyChart Brings the Doctor's Office to Your Living Room.jpg" alt="Tanner MyChart — virtual care campaign image" loading="lazy">
                   </div>
                   <!-- Slide 2 -->
                   <div class="sc-slide">
@@ -1714,14 +1737,18 @@
         Close Gallery
       </button>
       <div class="photo-modal-slides">
-        <!-- Slide 1: Main surgery photo -->
         <div class="photo-slide active" data-caption="Dr. Espinel at the da Vinci 5 Telepresence Console">
-          <img src="/photos/Dr.Espinel on DaVinci5 Telepresence Console.jpeg" alt="Dr. José Espinel operates the da Vinci 5 robotic surgical system" loading="lazy">
+          <img src="/photos/Dr.Espinel on DaVinci5 Telepresence Console.jpg" alt="Dr. José Espinel at the da Vinci 5 Telepresence Console" loading="lazy">
         </div>
-        <!-- Add additional photos below — copy this block and update src/alt/data-caption -->
-        <!-- <div class="photo-slide" data-caption="Caption for photo 2">
-          <img src="/photos/your-photo-2.jpg" alt="Alt text" loading="lazy">
-        </div> -->
+        <div class="photo-slide" data-caption="Dr. Espinel with colleagues on the Telepresence Monitor">
+          <img src="/photos/Dr.Espinel and Colleagues on DaVinci5 Telepresence Monitor.jpg" alt="Dr. Espinel and colleagues on the da Vinci 5 Telepresence Monitor" loading="lazy">
+        </div>
+        <div class="photo-slide" data-caption="Dr. Espinel performing the da Vinci 5 Telepresence Surgery">
+          <img src="/photos/Dr.Espinel Performing DaVinci5 Telepresence Surgery.jpg" alt="Dr. Espinel performing the da Vinci 5 telepresence surgery" loading="lazy">
+        </div>
+        <div class="photo-slide" data-caption="Dr. Espinel speaking on the da Vinci 5 Telepresence Monitor">
+          <img src="/photos/Dr.Espinel Speaking on DaVinci5 Telepresence Monitor.jpg" alt="Dr. Espinel speaking on the da Vinci 5 Telepresence Monitor" loading="lazy">
+        </div>
         <button class="photo-modal-nav photo-modal-prev" onclick="changeSlide(-1)" aria-label="Previous photo">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
@@ -1803,7 +1830,8 @@
       updateModal();
     }
 
-    function openPhotoModal() {
+    function openPhotoModal(startIndex) {
+      if (typeof startIndex === 'number') currentSlide = startIndex;
       buildDots();
       updateModal();
       document.getElementById('photoModal').classList.add('open');
