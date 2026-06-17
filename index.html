@@ -722,27 +722,118 @@
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ─── PHOTO THUMBNAIL STRIP ─────────────────────────────────── */
-    .photo-thumbs {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: .5rem; margin-top: 1.25rem; margin-bottom: 1.5rem;
+    /* ─── TECHMEDIC.ORG SECTION ─────────────────────────────────── */
+    #techmedic {
+      padding: 5.5rem 0;
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      position: relative; z-index: 1;
     }
-    .photo-thumb-btn {
-      position: relative; aspect-ratio: 4/3; overflow: hidden;
-      border-radius: 6px; border: 1.5px solid var(--border);
-      background: var(--bg3); cursor: pointer; padding: 0;
-      transition: border-color .2s, transform .2s;
+    .techmedic-eyebrow { display: flex; gap: .65rem; margin-bottom: 2.5rem; flex-wrap: wrap; }
+    .tm-venture-pill {
+      padding: .28rem .85rem;
+      background: rgba(251,191,36,.1);
+      border: 1px solid rgba(251,191,36,.22);
+      border-radius: 100px;
+      font-family: var(--font-mono); font-size: .6rem;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--amber);
     }
-    .photo-thumb-btn:hover { border-color: var(--border2); transform: translateY(-2px); }
-    .photo-thumb-btn img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .photo-thumb-overlay {
-      position: absolute; inset: 0;
-      background: rgba(0,200,255,.08);
+    .techmedic-inner {
+      display: grid; grid-template-columns: 1fr 1.65fr;
+      gap: 4rem; align-items: start;
+    }
+    .techmedic-visual-col { display: flex; flex-direction: column; gap: 1rem; }
+    .tm-logo-slot {
+      aspect-ratio: 16/7; background: var(--surface);
+      border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden;
       display: flex; align-items: center; justify-content: center;
-      opacity: 0; transition: opacity .2s;
     }
-    .photo-thumb-btn:hover .photo-thumb-overlay { opacity: 1; }
-    .photo-thumb-overlay svg { width: 18px; height: 18px; color: var(--cyan); }
+    .tm-logo-slot img { max-width: 70%; max-height: 70%; object-fit: contain; }
+    .tm-logo-default { display: flex; flex-direction: column; align-items: center; gap: .55rem; }
+    .tm-wordmark {
+      font-family: var(--font-disp); font-size: 2.4rem; font-weight: 900;
+      letter-spacing: -.03em; color: var(--amber); line-height: 1;
+    }
+    .tm-wordmark span { color: var(--muted2); font-weight: 600; font-size: 1.1rem; }
+    .tm-logo-sub {
+      font-family: var(--font-mono); font-size: .56rem;
+      letter-spacing: .2em; text-transform: uppercase; color: var(--muted);
+    }
+    .tm-img-slot {
+      aspect-ratio: 4/3; background: var(--surface);
+      border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden;
+    }
+    .tm-img-slot img { width: 100%; height: 100%; object-fit: cover; }
+    .tm-img-placeholder {
+      width: 100%; height: 100%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .7rem; color: var(--muted);
+    }
+    .tm-img-placeholder svg { width: 28px; height: 28px; opacity: .28; }
+    .tm-img-placeholder span {
+      font-family: var(--font-mono); font-size: .58rem;
+      letter-spacing: .1em; text-transform: uppercase; opacity: .28;
+    }
+    .techmedic-content-col {}
+    .techmedic-label {
+      font-family: var(--font-mono); font-size: .68rem;
+      letter-spacing: .18em; text-transform: uppercase; color: var(--amber);
+      margin-bottom: .75rem; display: flex; align-items: center; gap: .65rem;
+    }
+    .techmedic-label::before { content: ''; width: 20px; height: 1px; background: var(--amber); }
+    .techmedic-heading {
+      font-family: var(--font-disp);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 900; letter-spacing: -.02em;
+      color: var(--white); line-height: 1.05; margin-bottom: .9rem;
+    }
+    .techmedic-desc {
+      font-size: .95rem; color: var(--muted2); line-height: 1.75;
+      max-width: 520px; margin-bottom: 2rem;
+    }
+    .tm-stats-row {
+      display: flex; gap: 2.5rem; margin-bottom: 2rem;
+      padding-bottom: 2rem; border-bottom: 1px solid var(--border);
+    }
+    .tm-stat-val {
+      font-family: var(--font-disp); font-size: 2rem; font-weight: 900;
+      color: var(--amber); line-height: 1; margin-bottom: .3rem;
+    }
+    .tm-stat-label {
+      font-family: var(--font-mono); font-size: .56rem;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--muted); line-height: 1.5;
+    }
+    .tm-services-title {
+      font-family: var(--font-mono); font-size: .62rem;
+      letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+      margin-bottom: .85rem; display: flex; align-items: center; gap: .6rem;
+    }
+    .tm-services-title::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+    .tm-pills { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 2rem; }
+    .tm-pill {
+      padding: .35rem .8rem;
+      background: rgba(251,191,36,.07);
+      border: 1px solid rgba(251,191,36,.2);
+      border-radius: 5px; font-size: .78rem;
+      color: var(--text); letter-spacing: .01em;
+    }
+    .tm-cta {
+      display: inline-flex; align-items: center; gap: .5rem;
+      padding: .65rem 1.4rem;
+      background: var(--amber); color: #000;
+      font-family: var(--font-mono); font-size: .72rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      border-radius: var(--r); transition: background .2s, color .2s;
+    }
+    .tm-cta:hover { background: #d97706; color: #fff; }
+    .tm-cta svg { width: 13px; height: 13px; }
+    @media (max-width: 860px) {
+      .techmedic-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 540px) {
+      .tm-stats-row { gap: 1.5rem; }
+      .tm-stat-val { font-size: 1.5rem; }
+    }
 
     /* ─── SOCIAL PERFORMANCE CARDS ──────────────────────────────── */
     .social-cards-grid {
@@ -922,6 +1013,82 @@
     </div>
   </section>
 
+
+  <!-- ─── TECHMEDIC.ORG ────────────────────────────────────────────────────── -->
+  <section id="techmedic">
+    <div class="container">
+      <div class="reveal">
+
+        <div class="techmedic-eyebrow">
+          <span class="tm-venture-pill">Side Venture</span>
+          <span class="tm-venture-pill">Business Owner</span>
+          <span class="tm-venture-pill">Mobile Repair</span>
+        </div>
+
+        <div class="techmedic-inner">
+
+          <!-- Visual / Brand column -->
+          <div class="techmedic-visual-col">
+            <div class="tm-logo-slot">
+              <!-- Swap in your logo: <img src="/photos/TechMedic-logo.png" alt="TechMedic logo"> -->
+              <div class="tm-logo-default">
+                <div class="tm-wordmark">TechMedic<span>.org</span></div>
+                <div class="tm-logo-sub">Mobile Device Repair</div>
+              </div>
+            </div>
+            <div class="tm-img-slot">
+              <!-- Swap in a repair photo: <img src="/photos/techmedic-photo.jpg" alt="TechMedic at work"> -->
+              <div class="tm-img-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>Add Repair Photo</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Copy / Content column -->
+          <div class="techmedic-content-col">
+            <div class="techmedic-label">TechMedic.org</div>
+            <h2 class="techmedic-heading">Mobile Device Repair,<br>Done Right.</h2>
+            <p class="techmedic-desc">TechMedic is my independent mobile device repair business. I fix cell phones, computers, tablets and video game consoles for clients across the area — with a simple flat-rate model and free pickup and delivery that makes the whole process as frictionless as possible.</p>
+
+            <div class="tm-stats-row">
+              <div class="tm-stat">
+                <div class="tm-stat-val">$50</div>
+                <div class="tm-stat-label">Flat-Rate Fee<br>+ Parts</div>
+              </div>
+              <div class="tm-stat">
+                <div class="tm-stat-val">Free</div>
+                <div class="tm-stat-label">Pickup &amp;<br>Delivery</div>
+              </div>
+              <div class="tm-stat">
+                <div class="tm-stat-val">All</div>
+                <div class="tm-stat-label">Brands &amp;<br>Models</div>
+              </div>
+            </div>
+
+            <div class="tm-services-title">What I fix</div>
+            <div class="tm-pills">
+              <span class="tm-pill">Screen Replacement</span>
+              <span class="tm-pill">Battery Replacement</span>
+              <span class="tm-pill">Water Damage Repair</span>
+              <span class="tm-pill">Data Recovery</span>
+              <span class="tm-pill">Gaming Consoles</span>
+              <span class="tm-pill">Tablets &amp; iPads</span>
+              <span class="tm-pill">Cell Phones</span>
+              <span class="tm-pill">Computers &amp; Laptops</span>
+            </div>
+
+            <a href="https://www.techmedic.org" class="tm-cta" target="_blank" rel="noopener">
+              Visit TechMedic.org
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ─── WORK ──────────────────────────────────────────────────── -->
   <section id="work">
     <div class="container">
@@ -958,25 +1125,6 @@
                 <span class="tag">News Writing</span>
                 <span class="tag">Photography</span>
                 <span class="tag">Web Content</span>
-              </div>
-              <!-- Photo thumbnail strip — click any to open gallery at that slide -->
-              <div class="photo-thumbs">
-                <button class="photo-thumb-btn" onclick="openPhotoModal(0)" title="Dr. Espinel at the Telepresence Console">
-                  <img src="/photos/Dr.Espinel on DaVinci5 Telepresence Console.jpeg" alt="Dr. Espinel at the da Vinci 5 Telepresence Console" loading="lazy">
-                  <div class="photo-thumb-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-                </button>
-                <button class="photo-thumb-btn" onclick="openPhotoModal(1)" title="Dr. Espinel with Colleagues on the Monitor">
-                  <img src="/photos/Dr.Espinel and Colleagues on DaVinci5 Telepresence Monitor.JPG" alt="Dr. Espinel and colleagues on the da Vinci 5 Telepresence Monitor" loading="lazy">
-                  <div class="photo-thumb-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-                </button>
-                <button class="photo-thumb-btn" onclick="openPhotoModal(2)" title="Dr. Espinel Performing Surgery">
-                  <img src="/photos/Dr.Espinel Performing DaVinci5 Telepresence Surgery.JPG" alt="Dr. Espinel performing the da Vinci 5 telepresence surgery" loading="lazy">
-                  <div class="photo-thumb-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-                </button>
-                <button class="photo-thumb-btn" onclick="openPhotoModal(3)" title="Dr. Espinel Speaking on Monitor">
-                  <img src="/photos/Dr.Espinel Speaking on DaVinci5 Telepresence Monitor.JPG" alt="Dr. Espinel speaking on the da Vinci 5 Telepresence Monitor" loading="lazy">
-                  <div class="photo-thumb-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
-                </button>
               </div>
               <div class="card-footer">
                 <a href="https://www.tanner.org/news/surgery-without-borders-tanners-robotic-program-goes-international" class="card-link" target="_blank" rel="noopener">
@@ -1168,7 +1316,10 @@
           <!-- TRAUMA KIT / ADDITIONAL COVERAGE -->
           <div class="card">
             <div class="card-img">
-                 <img src="/photos/trauma-kits-group-photo-for-web.jpg" alt="Hospital donates trauma kits" loading="lazy">
+              <div class="card-img-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span>Community Safety</span>
+              </div>
               <div class="card-overlay"></div>
               <span class="card-type-badge">Community Engagement</span>
             </div>
@@ -1183,6 +1334,37 @@
               <div class="card-footer">
                 <a href="https://www.tanner.org/News/Higgins-General-Hospital-Donates-Trauma-Kits-to-Equip-Haralson-County-Sheriffs-Office-to-Handle-Unexpected-Emergencies" class="card-link" target="_blank" rel="noopener">
                   Read the Story
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- TECHMEDIC.ORG — personal business venture -->
+          <div class="card">
+            <div class="card-img">
+              <!-- Swap in a photo: <img src="/photos/techmedic-repair.jpg" alt="TechMedic repair"> -->
+              <div class="card-img-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+                <span>Add Repair Photo</span>
+              </div>
+              <div class="card-overlay"></div>
+              <span class="card-type-badge" style="color:var(--amber);border-color:rgba(251,191,36,.35);">Business Owner</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">TechMedic.org</h3>
+              <p class="card-desc">Outside of content strategy, I own and operate TechMedic — a mobile device repair business offering flat-rate repairs on phones, tablets, computers and gaming consoles with free pickup and delivery. I also designed and manage the business website.</p>
+              <div class="card-tags">
+                <span class="tag">Business Ownership</span>
+                <span class="tag">Web Design</span>
+                <span class="tag">Mobile Repair</span>
+                <span class="tag">Entrepreneurship</span>
+                <span class="tag">Customer Service</span>
+              </div>
+              <div class="card-footer">
+                <a href="https://www.techmedic.org" class="card-link" target="_blank" rel="noopener">
+                  Visit TechMedic.org
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
                 </a>
               </div>
@@ -1207,7 +1389,10 @@
           <!-- FOX5: Snakebite -->
           <div class="media-card">
             <div class="media-thumb">
-              <img src="/photos/News story covering unusual snake bite _ Fox5.png" alt="Fox5 Atlanta news coverage — venomous snakebite story" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+              <div class="social-img-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="3"/></svg>
+                <span>Add Coverage Photo</span>
+              </div>
             </div>
             <div class="media-body">
               <div class="media-outlet">Fox5 Atlanta · Broadcast Feature</div>
@@ -1230,7 +1415,10 @@
           <!-- FOX5: IV Fluid Shortage -->
           <div class="media-card">
             <div class="media-thumb">
-              <img src="/photos/News story covering IV fluid shortage _ Fox5.png" alt="Fox5 Atlanta news coverage — IV fluid shortage story" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+              <div class="social-img-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><polyline points="8 21 12 17 16 21"/><line x1="12" y1="17" x2="12" y2="3"/></svg>
+                <span>Add Coverage Photo</span>
+              </div>
             </div>
             <div class="media-body">
               <div class="media-outlet">Fox5 Atlanta · Broadcast Feature</div>
@@ -1253,7 +1441,11 @@
           <!-- ABRIDGE: AI Campaign + YouTube -->
           <div class="media-card">
               <div class="media-thumb">
-              <img src="/photos/Abridge's AI powered system.png" alt="Abridge's AI powered system" loading="lazy" style="width:100%;height:100%;object-fit:cover;">
+                <div class="social-img-placeholder">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  <span>Add Campaign Image</span>
+                </div>
+                <span class="card-type-badge">AI · Press Release</span>
               </div>
               <div class="media-body">
                 <div class="media-outlet">Abridge · Press Release &amp; Campaign Video</div>
@@ -1291,6 +1483,10 @@
           <div class="subsec-label">Social Media · Paid Campaigns · Analytics</div>
           <h3 class="subsec-title">Campaign <em>Performance</em></h3>
           <p class="subsec-desc" style="margin-bottom:1.25rem;">I wrote, launched and managed a paid social campaign series to promote Tanner MyChart — driving patient enrollment, engagement and feature awareness. Here's how each campaign performed.</p>
+          <div class="dashboard-note">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Replace each placeholder with a campaign image or screenshot — swap the src on any card's img tag
+          </div>
         </div>
 
         <div class="social-cards-grid">
@@ -1298,7 +1494,10 @@
           <!-- Campaign 1: Connect Your Family's Accounts — Images 1 & 2 (IMG_6198, IMG_6199): best post = 823 clicks, $0.29/click, $236.19, 29,312 reached -->
           <div class="social-card">
             <div class="social-card-img">
-              <img src="/photos/Connect Your Family’s Accounts in Tanner MyChart.png" alt="Connect Your Family's Accounts in Tanner MyChart campaign graphic" loading="lazy">
+              <div class="social-img-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>Add Campaign Image</span>
+              </div>
               <span class="card-type-badge">Blog + Paid Ad</span>
             </div>
             <div class="social-card-body">
@@ -1339,7 +1538,10 @@
           <!-- Campaign 2: View Test Results Instantly — Images 3 & 4 (IMG_6183, IMG_6184): 2,751 clicks, $0.31/click, $851.82 -->
           <div class="social-card">
             <div class="social-card-img">
-              <img src="/photos/View Test Results Instantly in Tanner MyChart.jpg" alt="View Test Results Instantly in Tanner MyChart campaign graphic" loading="lazy">
+              <div class="social-img-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span>Add Campaign Image</span>
+              </div>
               <span class="card-type-badge">Blog + Paid Ad</span>
             </div>
             <div class="social-card-body">
@@ -1413,7 +1615,10 @@
           <!-- Campaign 4: Video — Images 5 & 6 (IMG_6187, IMG_6188): 33,376 ThruPlays, 23,626 reached, $847.98 -->
           <div class="social-card">
             <div class="social-card-img">
-              <img src="/photos/Learn How You Can Check In Early Video Campaign.png" alt="Learn How You Can Check In Early video campaign graphic" loading="lazy">
+              <div class="social-img-placeholder">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+                <span>Add Campaign Image</span>
+              </div>
               <span class="card-type-badge">Video + Paid Ad</span>
             </div>
             <div class="social-card-body">
@@ -1454,7 +1659,10 @@
                 <div class="sc-slides-wrap" id="sc-mc-post-slides">
                   <!-- Slide 1 -->
                   <div class="sc-slide">
-                    <img src="/photos/Tanner MyChart Brings the Doctor's Office to Your Living Room.jpg" alt="Tanner MyChart — virtual care campaign image" loading="lazy">
+                    <div class="social-img-placeholder">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                      <span>Add Image 1</span>
+                    </div>
                   </div>
                   <!-- Slide 2 -->
                   <div class="sc-slide">
@@ -1726,18 +1934,14 @@
         Close Gallery
       </button>
       <div class="photo-modal-slides">
+        <!-- Slide 1: Main surgery photo -->
         <div class="photo-slide active" data-caption="Dr. Espinel at the da Vinci 5 Telepresence Console">
-          <img src="/photos/Dr.Espinel on DaVinci5 Telepresence Console.jpg" alt="Dr. José Espinel at the da Vinci 5 Telepresence Console" loading="lazy">
+          <img src="/photos/Dr.Espinel on DaVinci5 Telepresence Console.jpeg" alt="Dr. José Espinel operates the da Vinci 5 robotic surgical system" loading="lazy">
         </div>
-        <div class="photo-slide" data-caption="Dr. Espinel with colleagues on the Telepresence Monitor">
-          <img src="/photos/Dr.Espinel and Colleagues on DaVinci5 Telepresence Monitor.jpg" alt="Dr. Espinel and colleagues on the da Vinci 5 Telepresence Monitor" loading="lazy">
-        </div>
-        <div class="photo-slide" data-caption="Dr. Espinel performing the da Vinci 5 Telepresence Surgery">
-          <img src="/photos/Dr.Espinel Performing DaVinci5 Telepresence Surgery.jpg" alt="Dr. Espinel performing the da Vinci 5 telepresence surgery" loading="lazy">
-        </div>
-        <div class="photo-slide" data-caption="Dr. Espinel speaking on the da Vinci 5 Telepresence Monitor">
-          <img src="/photos/Dr.Espinel Speaking on DaVinci5 Telepresence Monitor.jpg" alt="Dr. Espinel speaking on the da Vinci 5 Telepresence Monitor" loading="lazy">
-        </div>
+        <!-- Add additional photos below — copy this block and update src/alt/data-caption -->
+        <!-- <div class="photo-slide" data-caption="Caption for photo 2">
+          <img src="/photos/your-photo-2.jpg" alt="Alt text" loading="lazy">
+        </div> -->
         <button class="photo-modal-nav photo-modal-prev" onclick="changeSlide(-1)" aria-label="Previous photo">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
@@ -1819,8 +2023,7 @@
       updateModal();
     }
 
-    function openPhotoModal(startIndex) {
-      if (typeof startIndex === 'number') currentSlide = startIndex;
+    function openPhotoModal() {
       buildDots();
       updateModal();
       document.getElementById('photoModal').classList.add('open');
