@@ -722,6 +722,29 @@
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* ─── PHOTO THUMBNAIL STRIP ─────────────────────────────────── */
+    .photo-thumbs {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: .5rem; margin-top: 1.25rem; margin-bottom: 1.5rem;
+    }
+    .photo-thumb-btn {
+      position: relative; aspect-ratio: 4/3; overflow: hidden;
+      border-radius: 6px; border: 1.5px solid var(--border);
+      background: var(--bg3); cursor: pointer; padding: 0;
+      transition: border-color .2s, transform .2s;
+    }
+    .photo-thumb-btn:hover { border-color: var(--border2); transform: translateY(-2px); }
+    .photo-thumb-btn img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-thumb-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,200,255,.08);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .2s;
+    }
+    .photo-thumb-btn:hover .photo-thumb-overlay { opacity: 1; }
+    .photo-thumb-overlay svg { width: 18px; height: 18px; color: var(--cyan); }
+
+
     /* ─── TECHMEDIC.ORG SECTION ─────────────────────────────────── */
     #techmedic {
       padding: 5.5rem 0;
@@ -745,8 +768,9 @@
     }
     .techmedic-visual-col { display: flex; flex-direction: column; gap: 1rem; }
     .tm-logo-slot {
-      aspect-ratio: 16/7; background: var(--surface);
-      border: 1px solid var(--border); border-radius: var(--r2); overflow: hidden;
+      aspect-ratio: 16/7;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--r2); overflow: hidden;
       display: flex; align-items: center; justify-content: center;
     }
     .tm-logo-slot img { max-width: 70%; max-height: 70%; object-fit: contain; }
@@ -774,7 +798,6 @@
       font-family: var(--font-mono); font-size: .58rem;
       letter-spacing: .1em; text-transform: uppercase; opacity: .28;
     }
-    .techmedic-content-col {}
     .techmedic-label {
       font-family: var(--font-mono); font-size: .68rem;
       letter-spacing: .18em; text-transform: uppercase; color: var(--amber);
@@ -975,12 +998,7 @@
         <p class="hero-sub">
           I've spent nearly a decade in marketing and communications working to get the right messages, stories and information to the right people. <strong>Across that time, I've learned that good content isn't just well-written. It's well-placed, well-timed and created with purpose.</strong>
         </p>
-        <div class="hero-actions">
-          <a href="your-resume.pdf" download class="btn-primary">
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-            View My Resume
-          </a>
-        </div>
+
       </div>
     </div>
     <div class="scroll-hint">
@@ -1012,6 +1030,7 @@
       </div>
     </div>
   </section>
+
 
 
   <!-- ─── TECHMEDIC.ORG ────────────────────────────────────────────────────── -->
@@ -1053,7 +1072,7 @@
 
             <div class="tm-stats-row">
               <div class="tm-stat">
-                <div class="tm-stat-val">$50</div>
+                <div class="tm-stat-val">$75</div>
                 <div class="tm-stat-label">Flat-Rate Fee<br>+ Parts</div>
               </div>
               <div class="tm-stat">
@@ -1125,6 +1144,25 @@
                 <span class="tag">News Writing</span>
                 <span class="tag">Photography</span>
                 <span class="tag">Web Content</span>
+              </div>
+              <!-- Photo thumbnail strip — click any to open gallery at that slide -->
+              <div class="photo-thumbs">
+                <button class="photo-thumb-btn" onclick="openPhotoModal(0)" title="Dr. Espinel at the Telepresence Console">
+                  <img src="/photos/Dr.Espinel on DaVinci5 Telepresence Console.jpeg" alt="Dr. Espinel at the da Vinci 5 Telepresence Console" loading="lazy">
+                  <div class="photo-thumb-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                </button>
+                <button class="photo-thumb-btn" onclick="openPhotoModal(1)" title="Dr. Espinel with Colleagues on the Monitor">
+                  <img src="/photos/Dr.Espinel and Colleagues on DaVinci5 Telepresence Monitor.JPG" alt="Dr. Espinel and colleagues on the da Vinci 5 Telepresence Monitor" loading="lazy">
+                  <div class="photo-thumb-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                </button>
+                <button class="photo-thumb-btn" onclick="openPhotoModal(2)" title="Dr. Espinel Performing Surgery">
+                  <img src="/photos/Dr.Espinel Performing DaVinci5 Telepresence Surgery.JPG" alt="Dr. Espinel performing the da Vinci 5 telepresence surgery" loading="lazy">
+                  <div class="photo-thumb-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                </button>
+                <button class="photo-thumb-btn" onclick="openPhotoModal(3)" title="Dr. Espinel Speaking on Monitor">
+                  <img src="/photos/Dr.Espinel Speaking on DaVinci5 Telepresence Monitor.JPG" alt="Dr. Espinel speaking on the da Vinci 5 Telepresence Monitor" loading="lazy">
+                  <div class="photo-thumb-overlay"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+                </button>
               </div>
               <div class="card-footer">
                 <a href="https://www.tanner.org/news/surgery-without-borders-tanners-robotic-program-goes-international" class="card-link" target="_blank" rel="noopener">
@@ -1341,35 +1379,6 @@
           </div>
 
 
-          <!-- TECHMEDIC.ORG — personal business venture -->
-          <div class="card">
-            <div class="card-img">
-              <!-- Swap in a photo: <img src="/photos/techmedic-repair.jpg" alt="TechMedic repair"> -->
-              <div class="card-img-placeholder">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
-                <span>Add Repair Photo</span>
-              </div>
-              <div class="card-overlay"></div>
-              <span class="card-type-badge" style="color:var(--amber);border-color:rgba(251,191,36,.35);">Business Owner</span>
-            </div>
-            <div class="card-body">
-              <h3 class="card-title">TechMedic.org</h3>
-              <p class="card-desc">Outside of content strategy, I own and operate TechMedic — a mobile device repair business offering flat-rate repairs on phones, tablets, computers and gaming consoles with free pickup and delivery. I also designed and manage the business website.</p>
-              <div class="card-tags">
-                <span class="tag">Business Ownership</span>
-                <span class="tag">Web Design</span>
-                <span class="tag">Mobile Repair</span>
-                <span class="tag">Entrepreneurship</span>
-                <span class="tag">Customer Service</span>
-              </div>
-              <div class="card-footer">
-                <a href="https://www.techmedic.org" class="card-link" target="_blank" rel="noopener">
-                  Visit TechMedic.org
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-                </a>
-              </div>
-            </div>
-          </div>
 
         </div><!-- /cards-grid -->
       </div>
@@ -1886,13 +1895,7 @@
         </div>
       </div><!-- /resume-grid -->
 
-      <div class="resume-download reveal">
-        <a href="your-resume.pdf" download class="btn-primary">
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-          Download Full Resume
-        </a>
-      </div>
-    </div>
+
   </section>
 
   <!-- ─── CONTACT ─────────────────────────────────────────────────── -->
@@ -1934,14 +1937,18 @@
         Close Gallery
       </button>
       <div class="photo-modal-slides">
-        <!-- Slide 1: Main surgery photo -->
         <div class="photo-slide active" data-caption="Dr. Espinel at the da Vinci 5 Telepresence Console">
-          <img src="/photos/Dr.Espinel on DaVinci5 Telepresence Console.jpeg" alt="Dr. José Espinel operates the da Vinci 5 robotic surgical system" loading="lazy">
+          <img src="/photos/Dr.Espinel on DaVinci5 Telepresence Console.jpeg" alt="Dr. José Espinel at the da Vinci 5 Telepresence Console" loading="lazy">
         </div>
-        <!-- Add additional photos below — copy this block and update src/alt/data-caption -->
-        <!-- <div class="photo-slide" data-caption="Caption for photo 2">
-          <img src="/photos/your-photo-2.jpg" alt="Alt text" loading="lazy">
-        </div> -->
+        <div class="photo-slide" data-caption="Dr. Espinel with colleagues on the Telepresence Monitor">
+          <img src="/photos/Dr.Espinel and Colleagues on DaVinci5 Telepresence Monitor.JPG" alt="Dr. Espinel and colleagues on the da Vinci 5 Telepresence Monitor" loading="lazy">
+        </div>
+        <div class="photo-slide" data-caption="Dr. Espinel performing the da Vinci 5 Telepresence Surgery">
+          <img src="/photos/Dr.Espinel Performing DaVinci5 Telepresence Surgery.JPG" alt="Dr. Espinel performing the da Vinci 5 telepresence surgery" loading="lazy">
+        </div>
+        <div class="photo-slide" data-caption="Dr. Espinel speaking on the da Vinci 5 Telepresence Monitor">
+          <img src="/photos/Dr.Espinel Speaking on DaVinci5 Telepresence Monitor.JPG" alt="Dr. Espinel speaking on the da Vinci 5 Telepresence Monitor" loading="lazy">
+        </div>
         <button class="photo-modal-nav photo-modal-prev" onclick="changeSlide(-1)" aria-label="Previous photo">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
