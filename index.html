@@ -980,31 +980,77 @@
     .doc-thumb:hover .doc-thumb-cta, .doc-thumb:focus-visible .doc-thumb-cta { opacity: 1; }
     .doc-thumb-cta svg { width: 15px; height: 15px; }
 
-    /* ─── SIMPLE POPUP (PDF + image) ────────────────────────────── */
+    /* ─── POPUP GALLERY (campaign book pages + billboard) ───────── */
     .doc-modal {
       display: none; position: fixed; inset: 0; z-index: 10001;
       background: rgba(8,11,18,.97); backdrop-filter: blur(12px);
-      align-items: center; justify-content: center; padding: 3rem 1rem 1rem;
+      align-items: center; justify-content: center; padding: 3.5rem 1rem 1rem;
     }
     .doc-modal.open { display: flex; }
+    .doc-modal-inner { position: relative; width: 100%; max-width: 960px; }
     .doc-stage {
-      position: relative; width: 100%; max-width: 1000px; height: 100%;
+      position: relative; height: min(72vh, 900px);
       background: var(--bg3); border: 1px solid var(--border);
       border-radius: var(--r2); overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
     }
-    .doc-stage img { width: 100%; height: 100%; object-fit: contain; background: var(--bg3); }
-    .doc-stage iframe { width: 100%; height: 100%; border: none; background: var(--bg3); }
+    .book-slide, .board-slide { display: none; width: 100%; height: 100%; }
+    .book-slide.active, .board-slide.active { display: block; }
+    .book-slide img, .board-slide img {
+      width: 100%; height: 100%; object-fit: contain; background: var(--bg3);
+    }
+    /* Shown automatically when a page image hasn't been added yet */
+    .page-placeholder {
+      width: 100%; height: 100%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .9rem; color: var(--muted);
+    }
+    .page-placeholder svg { width: 34px; height: 34px; opacity: .3; }
+    .page-placeholder span {
+      font-family: var(--font-mono); font-size: .62rem;
+      letter-spacing: .12em; text-transform: uppercase; opacity: .45;
+    }
+    .doc-nav {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(13,17,23,.88); backdrop-filter: blur(6px);
+      border: 1px solid var(--border2); color: var(--text);
+      width: 42px; height: 42px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: color .2s, border-color .2s; z-index: 2; padding: 0;
+    }
+    .doc-nav:hover { border-color: var(--cyan); color: var(--cyan); }
+    .doc-nav svg { width: 16px; height: 16px; }
+    .doc-prev { left: .9rem; }
+    .doc-next { right: .9rem; }
     .doc-close {
-      position: absolute; top: 1rem; right: 1rem; z-index: 2;
-      width: 38px; height: 38px; border-radius: 50%;
-      background: rgba(13,17,23,.9); border: 1px solid var(--border2);
-      color: var(--text); cursor: pointer; padding: 0;
-      display: flex; align-items: center; justify-content: center;
-      transition: color .2s, border-color .2s;
+      position: absolute; top: -2.6rem; right: 0;
+      background: none; border: none; color: var(--muted2);
+      font-family: var(--font-mono); font-size: .7rem; letter-spacing: .1em;
+      text-transform: uppercase; cursor: pointer; padding: .35rem .5rem;
+      display: flex; align-items: center; gap: .4rem; transition: color .2s;
     }
-    .doc-close:hover { color: var(--cyan); border-color: var(--cyan); }
-    .doc-close svg { width: 16px; height: 16px; }
+    .doc-close:hover { color: var(--white); }
+    .doc-close svg { width: 12px; height: 12px; }
+    .doc-modal-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; margin-top: .85rem; padding: 0 .25rem;
+    }
+    .doc-caption {
+      font-family: var(--font-mono); font-size: .64rem;
+      letter-spacing: .06em; color: var(--muted);
+    }
+    .doc-counter {
+      font-family: var(--font-mono); font-size: .62rem;
+      letter-spacing: .1em; color: var(--muted); opacity: .55;
+    }
+    .doc-dots { display: flex; gap: .45rem; align-items: center; }
+    .doc-dot {
+      width: 6px; height: 6px; border-radius: 50%; border: none; padding: 0;
+      background: var(--muted); opacity: .35; cursor: pointer; transition: all .2s;
+    }
+    .doc-dot.active { background: var(--cyan); opacity: 1; transform: scale(1.3); }
+    @media (max-width: 540px) {
+      .doc-stage { height: 60vh; }
+      .doc-modal-footer { flex-wrap: wrap; gap: .5rem; }
+    }
 
     /* ─── RESPONSIVE ─────────────────────────────────────────────── */
     @media (max-width: 1000px) {
@@ -1793,8 +1839,9 @@ right people at the right moment. <strong>Throughout my career, one of the best 
 
           <!-- GAP FUND CAMPAIGN BOOK -->
           <div class="card">
-            <button class="doc-thumb" onclick="openPdf()" aria-label="Open the GAP Fund campaign book">
-              <img src="/photos/GAPFund-CampaignBook-2021.pdf" alt="GAP Fund Campaign book cover for West Georgia Technical College" loading="lazy">
+            <button class="doc-thumb" onclick="openBook()" aria-label="Open the GAP Fund campaign book">
+              <!-- Card thumbnail — drop in your cover JPEG at this path -->
+              <img src="/photos/gapfund/page-1.jpg" alt="GAP Fund Campaign book cover for West Georgia Technical College" loading="lazy" onerror="thumbPlaceholder(this)">
               <span class="card-type-badge">Campaign Book</span>
               <span class="doc-thumb-cta">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
@@ -1812,7 +1859,7 @@ right people at the right moment. <strong>Throughout my career, one of the best 
                 <span class="tag">Fundraising</span>
               </div>
               <div class="card-footer">
-                <button class="card-link" onclick="openPdf()" style="background:none;border:none;cursor:pointer;padding:0;">
+                <button class="card-link" onclick="openBook()" style="background:none;border:none;cursor:pointer;padding:0;">
                   View Campaign Book
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 1h5l3 3v7H2z"/><path d="M7 1v3h3"/></svg>
                 </button>
@@ -2338,13 +2385,58 @@ right people at the right moment. <strong>Throughout my career, one of the best 
   </footer>
 
   <!-- ─── DOCUMENT LIGHTBOX (Campaign Book + Billboard) ─────────── -->
-  <div class="doc-modal" id="docModal" role="dialog" aria-modal="true" aria-label="Viewer">
-    <button class="doc-close" onclick="closeDoc()" aria-label="Close">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    </button>
-    <div class="doc-stage">
-      <iframe id="docFrame" title="Campaign book" style="display:none;"></iframe>
-      <img id="docImage" src="" alt="" style="display:none;">
+  <!-- ─── POPUP GALLERY (Campaign Book + Billboard) ─────────────── -->
+  <div class="doc-modal" id="docModal" role="dialog" aria-modal="true" aria-label="Gallery">
+    <div class="doc-modal-inner">
+      <button class="doc-close" onclick="closeDoc()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        Close
+      </button>
+      <div class="doc-stage">
+
+        <!-- ── GAP FUND CAMPAIGN BOOK ──
+             One .book-slide per page. Replace each src with your JPEG.
+             Until a file exists at that path, a placeholder shows instead.
+             Add a page by copying a block and bumping the number. -->
+        <div class="book-slide active" data-caption="Page 1 — Cover">
+          <img src="/photos/gapfund/page-1.jpg" alt="GAP Fund campaign book, page 1" loading="lazy" onerror="pagePlaceholder(this, 1)">
+        </div>
+        <div class="book-slide" data-caption="Page 2 — Website — Gap Funding Program page">
+          <img src="/photos/gapfund/page-2.jpg" alt="GAP Fund campaign book, page 2" loading="lazy" onerror="pagePlaceholder(this, 2)">
+        </div>
+        <div class="book-slide" data-caption="Page 3 — Website — full copy">
+          <img src="/photos/gapfund/page-3.jpg" alt="GAP Fund campaign book, page 3" loading="lazy" onerror="pagePlaceholder(this, 3)">
+        </div>
+        <div class="book-slide" data-caption="Page 4 — Paid social — low-tier donation">
+          <img src="/photos/gapfund/page-4.jpg" alt="GAP Fund campaign book, page 4" loading="lazy" onerror="pagePlaceholder(this, 4)">
+        </div>
+        <div class="book-slide" data-caption="Page 5 — Paid social — mid-tier donation">
+          <img src="/photos/gapfund/page-5.jpg" alt="GAP Fund campaign book, page 5" loading="lazy" onerror="pagePlaceholder(this, 5)">
+        </div>
+        <div class="book-slide" data-caption="Page 6 — Paid social — high-tier donation">
+          <img src="/photos/gapfund/page-6.jpg" alt="GAP Fund campaign book, page 6" loading="lazy" onerror="pagePlaceholder(this, 6)">
+        </div>
+        <div class="book-slide" data-caption="Page 7 — Print — rack card">
+          <img src="/photos/gapfund/page-7.jpg" alt="GAP Fund campaign book, page 7" loading="lazy" onerror="pagePlaceholder(this, 7)">
+        </div>
+
+        <!-- ── BILLBOARD ── -->
+        <div class="board-slide" data-caption="Tanner Ortho and Spine Center — digital billboard">
+          <img src="/photos/Ortho-HRA-billboard.DNG" alt="Digital billboard for Tanner Ortho and Spine Center" loading="lazy">
+        </div>
+
+        <button class="doc-nav doc-prev" onclick="docMove(-1)" aria-label="Previous page">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="doc-nav doc-next" onclick="docMove(1)" aria-label="Next page">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div class="doc-modal-footer">
+        <span class="doc-caption" id="docCaption"></span>
+        <span class="doc-dots" id="docDots"></span>
+        <span class="doc-counter" id="docCounter"></span>
+      </div>
     </div>
   </div>
 
@@ -2530,54 +2622,88 @@ right people at the right moment. <strong>Throughout my career, one of the best 
       scInit(id);
     });
 
-    /* ── Simple popup: openPdf() opens the full campaign book, openImage() the billboard ── */
-    const DOC_PDF   = '/photos/GAPFund-CampaignBook-2021.pdf';
-    // NOTE: browsers cannot display .DNG (camera raw). Swap this to the .jpeg
-    // version of the same photo and the billboard will render.
-    const DOC_IMAGE = '/photos/Ortho-HRA-billboard.DNG';
+    /* ── Popup gallery ──
+       openBook()  → flips through the .book-slide pages in #docModal
+       openImage() → shows the .board-slide billboard on its own
+       To add a page, copy a .book-slide block in the markup above. Nothing here changes. */
+    const docModal   = document.getElementById('docModal');
+    const docCaption = document.getElementById('docCaption');
+    const docCounter = document.getElementById('docCounter');
+    const docDots    = document.getElementById('docDots');
+    let docSlides = [], docIndex = 0, docOpen = false;
 
-    const docModal = document.getElementById('docModal');
-    const docFrame = document.getElementById('docFrame');
-    const docImage = document.getElementById('docImage');
-    let docOpen = false;
-
-    function openPdf() {
-      docImage.style.display = 'none';
-      docFrame.src = DOC_PDF;
-      docFrame.style.display = 'block';
-      openDocModal();
+    // Swap in a labelled placeholder when a page image isn't there yet
+    function pagePlaceholder(img, n) {
+      const box = document.createElement('div');
+      box.className = 'page-placeholder';
+      box.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Add page ' + n + '</span>';
+      img.replaceWith(box);
+    }
+    function thumbPlaceholder(img) {
+      const box = document.createElement('div');
+      box.className = 'page-placeholder';
+      box.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg><span>Add cover image</span>';
+      img.replaceWith(box);
     }
 
-    function openImage() {
-      docFrame.style.display = 'none';
-      docFrame.src = '';
-      docImage.src = DOC_IMAGE;
-      docImage.alt = 'Digital billboard for Tanner Ortho and Spine Center';
-      docImage.style.display = 'block';
-      openDocModal();
+    function docRender() {
+      docSlides.forEach((s, i) => s.classList.toggle('active', i === docIndex));
+      const many = docSlides.length > 1;
+      docCaption.textContent = docSlides[docIndex].dataset.caption || '';
+      docCounter.textContent = many ? (docIndex + 1) + ' / ' + docSlides.length : '';
+      docDots.querySelectorAll('.doc-dot').forEach((d, i) => d.classList.toggle('active', i === docIndex));
+      document.querySelectorAll('.doc-nav').forEach(n => n.style.display = many ? 'flex' : 'none');
     }
 
-    function openDocModal() {
+    function openGallery(selector) {
+      document.querySelectorAll('.book-slide, .board-slide').forEach(s => s.classList.remove('active'));
+      docSlides = [...document.querySelectorAll(selector)];
+      if (!docSlides.length) return;
+      docIndex = 0;
+
+      docDots.innerHTML = '';
+      if (docSlides.length > 1) {
+        docSlides.forEach((_, i) => {
+          const d = document.createElement('button');
+          d.className = 'doc-dot';
+          d.setAttribute('aria-label', 'Page ' + (i + 1));
+          d.onclick = () => { docIndex = i; docRender(); };
+          docDots.appendChild(d);
+        });
+      }
+
+      docRender();
       docModal.classList.add('open');
       document.body.style.overflow = 'hidden';
       docOpen = true;
     }
 
+    function openBook()  { openGallery('.book-slide'); }
+    function openImage() { openGallery('.board-slide'); }
+
+    function docMove(dir) {
+      if (!docSlides.length) return;
+      docIndex = (docIndex + dir + docSlides.length) % docSlides.length;
+      docRender();
+    }
+
     function closeDoc() {
       docModal.classList.remove('open');
       document.body.style.overflow = '';
-      docFrame.src = '';
       docOpen = false;
     }
 
-    // Click outside the document closes it
+    // Click outside closes it
     docModal.addEventListener('click', function (e) {
       if (e.target === this) closeDoc();
     });
 
-    // Escape closes it
+    // Escape closes, arrows page through
     document.addEventListener('keydown', function (e) {
-      if (docOpen && e.key === 'Escape') closeDoc();
+      if (!docOpen) return;
+      if (e.key === 'Escape') closeDoc();
+      if (e.key === 'ArrowLeft') docMove(-1);
+      if (e.key === 'ArrowRight') docMove(1);
     });
 
   </script>
