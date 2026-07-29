@@ -996,7 +996,6 @@
       font-family: var(--font-mono); font-size: .66rem;
       letter-spacing: .14em; text-transform: uppercase; color: var(--cyan);
     }
-    .doc-modal-actions { display: flex; align-items: center; gap: 1.1rem; }
     .doc-modal-btn {
       background: none; border: none; cursor: pointer; padding: 0;
       display: inline-flex; align-items: center; gap: .4rem;
@@ -1010,41 +1009,20 @@
       position: relative; background: var(--bg3);
       border: 1px solid var(--border); border-radius: var(--r2);
       overflow: hidden; display: flex; align-items: center; justify-content: center;
-      height: min(76vh, 900px);
+      height: min(80vh, 1000px);
     }
     .doc-stage img { width: 100%; height: 100%; object-fit: contain; background: var(--bg3); }
-    .doc-nav {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      background: rgba(13,17,23,.88); backdrop-filter: blur(6px);
-      border: 1px solid var(--border2); color: var(--text);
-      width: 42px; height: 42px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer; transition: all .2s; z-index: 2; padding: 0;
-    }
-    .doc-nav:hover { border-color: var(--cyan); color: var(--cyan); }
-    .doc-nav svg { width: 16px; height: 16px; }
-    .doc-prev { left: .85rem; }
-    .doc-next { right: .85rem; }
-    .doc-modal-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem; margin-top: .8rem; padding: 0 .25rem; flex-wrap: wrap;
-    }
+    .doc-stage iframe { width: 100%; height: 100%; border: none; background: var(--bg3); }
     .doc-caption {
+      display: block; margin-top: .8rem; padding: 0 .25rem;
       font-family: var(--font-mono); font-size: .64rem;
       letter-spacing: .06em; color: var(--muted);
     }
-    .doc-counter {
-      font-family: var(--font-mono); font-size: .62rem;
-      letter-spacing: .1em; color: var(--muted); opacity: .6;
-    }
-    .doc-dots { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
-    .doc-dot {
-      width: 6px; height: 6px; border-radius: 50%; border: none; padding: 0;
-      background: var(--muted); opacity: .35; cursor: pointer; transition: all .2s;
-    }
-    .doc-dot.active { background: var(--cyan); opacity: 1; transform: scale(1.35); }
+    /* Fallback link — some mobile browsers won't render a PDF inline.
+       Delete this rule and its markup if you don't want the fallback. */
+    .doc-fallback { color: var(--cyan); }
     @media (max-width: 540px) {
-      .doc-stage { height: 62vh; }
+      .doc-stage { height: 68vh; }
       .doc-modal-bar { gap: .5rem; }
     }
 
@@ -1835,12 +1813,12 @@ right people at the right moment. <strong>Throughout my career, one of the best 
 
           <!-- GAP FUND CAMPAIGN BOOK -->
           <div class="card">
-            <button class="doc-thumb" onclick="openDoc('gapfund')" aria-label="Open the GAP Fund campaign book">
-              <img src="/photos/GAPFund-CampaignBook-2021.pdf" alt="GAP Fund Campaign book cover for West Georgia Technical College" loading="lazy">
+            <button class="doc-thumb" onclick="openPdf()" aria-label="Open the GAP Fund campaign book">
+              <img src="/photos/GAPFund-cover.jpg" alt="GAP Fund Campaign book cover for West Georgia Technical College" loading="lazy">
               <span class="card-type-badge">Campaign Book</span>
               <span class="doc-thumb-cta">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-                View all 7 pages
+                Open the campaign book
               </span>
             </button>
             <div class="card-body">
@@ -1854,26 +1832,22 @@ right people at the right moment. <strong>Throughout my career, one of the best 
                 <span class="tag">Fundraising</span>
               </div>
               <div class="card-footer">
-                <button class="card-link" onclick="openDoc('gapfund')" style="background:none;border:none;cursor:pointer;padding:0;">
+                <button class="card-link" onclick="openPdf()" style="background:none;border:none;cursor:pointer;padding:0;">
                   View Campaign Book
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1h4v4H1zM7 1h4v4H7zM1 7h4v4H1zM7 7h4v4H7z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 1h5l3 3v7H2z"/><path d="M7 1v3h3"/></svg>
                 </button>
-                <a href="/photos/GAPFund-CampaignBook-2021.pdf" class="card-link" target="_blank" rel="noopener">
-                  Download PDF
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 1v7M3.5 5.5L6 8l2.5-2.5M1.5 10.5h9"/></svg>
-                </a>
               </div>
             </div>
           </div>
 
           <!-- ORTHO BILLBOARD -->
           <div class="card">
-            <button class="doc-thumb" onclick="openDoc('billboard')" aria-label="Open the Tanner Ortho and Spine billboard">
-              <img src="/photos/Ortho-HRA-billboard.DNG" alt="Digital billboard for Tanner Ortho and Spine Center reading Learn how to move past joint pain" loading="lazy" style="object-position:center;">
+            <button class="doc-thumb" onclick="openImage()" aria-label="View the Tanner Ortho and Spine billboard larger">
+              <img src="/photos/Ortho-HRA-billboard.jpeg" alt="Digital billboard for Tanner Ortho and Spine Center reading Learn how to move past joint pain" loading="lazy" style="object-position:center;">
               <span class="card-type-badge">Out-of-Home</span>
               <span class="doc-thumb-cta">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                View full size
+                View larger
               </span>
             </button>
             <div class="card-body">
@@ -1886,14 +1860,10 @@ right people at the right moment. <strong>Throughout my career, one of the best 
                 <span class="tag">Campaign Development</span>
               </div>
               <div class="card-footer">
-                <button class="card-link" onclick="openDoc('billboard')" style="background:none;border:none;cursor:pointer;padding:0;">
+                <button class="card-link" onclick="openImage()" style="background:none;border:none;cursor:pointer;padding:0;">
                   View Billboard
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 1h4v4H1zM7 1h4v4H7zM1 7h4v4H1zM7 7h4v4H7z"/></svg>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="5" r="3.5"/><path d="M11 11L7.6 7.6"/></svg>
                 </button>
-                <a href="https://www.tanner.org/ortho-quiz" class="card-link" target="_blank" rel="noopener">
-                  Take the Assessment
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 10L10 2M10 2H5M10 2v5"/></svg>
-                </a>
               </div>
             </div>
           </div>
@@ -2390,32 +2360,17 @@ right people at the right moment. <strong>Throughout my career, one of the best 
   <div class="doc-modal" id="docModal" role="dialog" aria-modal="true" aria-label="Document viewer">
     <div class="doc-modal-inner">
       <div class="doc-modal-bar">
-        <span class="doc-modal-title" id="docModalTitle">Campaign Book</span>
-        <div class="doc-modal-actions">
-          <a class="doc-modal-btn" id="docModalDownload" href="#" target="_blank" rel="noopener">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 11l5 5 5-5M4 21h16"/></svg>
-            Download
-          </a>
-          <button class="doc-modal-btn" onclick="closeDoc()">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            Close
-          </button>
-        </div>
+        <span class="doc-modal-title" id="docModalTitle"></span>
+        <button class="doc-modal-btn" onclick="closeDoc()">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          Close
+        </button>
       </div>
       <div class="doc-stage">
-        <img id="docImage" src="" alt="">
-        <button class="doc-nav doc-prev" onclick="docMove(-1)" aria-label="Previous page">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="doc-nav doc-next" onclick="docMove(1)" aria-label="Next page">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
+        <iframe id="docFrame" title="GAP Fund campaign book" style="display:none;"></iframe>
+        <img id="docImage" src="" alt="" style="display:none;">
       </div>
-      <div class="doc-modal-footer">
-        <span class="doc-caption" id="docCaption"></span>
-        <span class="doc-dots" id="docDots"></span>
-        <span class="doc-counter" id="docCounter"></span>
-      </div>
+      <span class="doc-caption" id="docCaption"></span>
     </div>
   </div>
 
@@ -2601,98 +2556,63 @@ right people at the right moment. <strong>Throughout my career, one of the best 
       scInit(id);
     });
 
-    /* ── Document Lightbox: campaign book + billboard ──
-       To add pages or boards, just add entries to the arrays below. */
-    const docSets = {
-      gapfund: {
-        title: 'GAP Fund Campaign Book — West Georgia Technical College',
-        download: '/files/GAPFund-CampaignBook-2021.pdf',
-        pages: [
-          { src: '/photos/gapfund/page-1.jpg', caption: 'Cover' },
-          { src: '/photos/gapfund/page-2.jpg', caption: 'Website — Gap Funding Program page' },
-          { src: '/photos/gapfund/page-3.jpg', caption: 'Website — full copy' },
-          { src: '/photos/gapfund/page-4.jpg', caption: 'Paid social — low-tier donation' },
-          { src: '/photos/gapfund/page-5.jpg', caption: 'Paid social — mid-tier donation' },
-          { src: '/photos/gapfund/page-6.jpg', caption: 'Paid social — high-tier donation' },
-          { src: '/photos/gapfund/page-7.jpg', caption: 'Print — rack card' }
-        ]
-      },
-      billboard: {
-        title: 'Tanner Ortho and Spine Center — Digital Billboard',
-        download: '/photos/Ortho-HRA-billboard.jpeg',
-        pages: [
-          { src: '/photos/Ortho-HRA-billboard.jpeg', caption: 'Digital board, Carrollton, GA — "Learn how to move past joint pain."' }
-        ]
-      }
-    };
+    /* ── Document Lightbox ──
+       openPdf()   → the full GAP Fund campaign book, all pages in one document
+       openImage() → the billboard photo at full size */
+    const DOC_PDF   = '/files/GAPFund-CampaignBook-2021.pdf';
+    const DOC_IMAGE = '/photos/Ortho-HRA-billboard.jpeg';
 
-    let docSet = null, docIndex = 0;
-    const docImage    = document.getElementById('docImage');
-    const docCaption  = document.getElementById('docCaption');
-    const docCounter  = document.getElementById('docCounter');
-    const docDots     = document.getElementById('docDots');
-    const docTitle    = document.getElementById('docModalTitle');
-    const docDownload = document.getElementById('docModalDownload');
+    const docModal   = document.getElementById('docModal');
+    const docFrame   = document.getElementById('docFrame');
+    const docImage   = document.getElementById('docImage');
+    const docTitle   = document.getElementById('docModalTitle');
+    const docCaption = document.getElementById('docCaption');
+    let docOpen = false;
 
-    function docRender() {
-      if (!docSet) return;
-      const page = docSet.pages[docIndex];
-      docImage.src = page.src;
-      docImage.alt = page.caption;
-      docCaption.textContent = page.caption;
-      docCounter.textContent = docSet.pages.length > 1 ? `${docIndex + 1} / ${docSet.pages.length}` : '';
-      docDots.querySelectorAll('.doc-dot').forEach((d, i) => d.classList.toggle('active', i === docIndex));
+    function showDoc() {
+      docModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      docOpen = true;
     }
 
-    function openDoc(key) {
-      docSet = docSets[key];
-      if (!docSet) return;
-      docIndex = 0;
-      docTitle.textContent = docSet.title;
-      docDownload.href = docSet.download;
-      docDownload.style.display = docSet.download ? 'inline-flex' : 'none';
+    function openPdf() {
+      docImage.style.display = 'none';
+      docFrame.src = DOC_PDF;
+      docFrame.style.display = 'block';
+      docTitle.textContent = 'GAP Fund Campaign Book — West Georgia Technical College';
+      /* Fallback line — delete these two lines and the .doc-fallback CSS rule
+         if you'd rather show nothing when a browser can't render PDFs inline. */
+      docCaption.innerHTML = 'Scroll to read all seven pages. Not loading? ' +
+        '<a class="doc-fallback" href="' + DOC_PDF + '" target="_blank" rel="noopener">Open in a new tab</a>.';
+      showDoc();
+    }
 
-      docDots.innerHTML = '';
-      const many = docSet.pages.length > 1;
-      if (many) {
-        docSet.pages.forEach((_, i) => {
-          const d = document.createElement('button');
-          d.className = 'doc-dot' + (i === 0 ? ' active' : '');
-          d.setAttribute('aria-label', `Page ${i + 1}`);
-          d.onclick = () => { docIndex = i; docRender(); };
-          docDots.appendChild(d);
-        });
-      }
-      document.querySelectorAll('.doc-nav').forEach(n => n.style.display = many ? 'flex' : 'none');
-
-      docRender();
-      document.getElementById('docModal').classList.add('open');
-      document.body.style.overflow = 'hidden';
+    function openImage() {
+      docFrame.style.display = 'none';
+      docFrame.src = '';
+      docImage.src = DOC_IMAGE;
+      docImage.alt = 'Digital billboard for Tanner Ortho and Spine Center';
+      docImage.style.display = 'block';
+      docTitle.textContent = 'Tanner Ortho and Spine Center — Digital Billboard';
+      docCaption.textContent = 'Digital board, Carrollton, GA';
+      showDoc();
     }
 
     function closeDoc() {
-      document.getElementById('docModal').classList.remove('open');
+      docModal.classList.remove('open');
       document.body.style.overflow = '';
-      docSet = null;
-    }
-
-    function docMove(dir) {
-      if (!docSet) return;
-      docIndex = (docIndex + dir + docSet.pages.length) % docSet.pages.length;
-      docRender();
+      docFrame.src = '';
+      docOpen = false;
     }
 
     // Close on backdrop click
-    document.getElementById('docModal').addEventListener('click', function (e) {
+    docModal.addEventListener('click', function (e) {
       if (e.target === this) closeDoc();
     });
 
-    // Keyboard: only act when the document viewer is open
+    // Escape closes the viewer
     document.addEventListener('keydown', function (e) {
-      if (!docSet) return;
-      if (e.key === 'Escape') closeDoc();
-      if (e.key === 'ArrowLeft') docMove(-1);
-      if (e.key === 'ArrowRight') docMove(1);
+      if (docOpen && e.key === 'Escape') closeDoc();
     });
 
   </script>
