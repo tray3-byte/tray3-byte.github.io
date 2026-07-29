@@ -1823,7 +1823,8 @@ right people at the right moment. <strong>Throughout my career, one of the best 
           <!-- ORTHO BILLBOARD -->
           <div class="card">
             <button class="doc-thumb" onclick="openImage()" aria-label="View the Tanner Ortho and Spine billboard larger">
-              <img src="/photos/Ortho-HRA-billboard.jpeg" alt="Digital billboard for Tanner Ortho and Spine Center reading Learn how to move past joint pain" loading="lazy" style="object-position:center;">
+              <!-- .DNG will not render in a browser — change both this src and DOC_IMAGE in the script to the .jpeg to show the photo -->
+              <img src="/photos/Ortho-HRA-billboard.DNG" alt="Digital billboard for Tanner Ortho and Spine Center reading Learn how to move past joint pain" loading="lazy" style="object-position:center;">
               <span class="card-type-badge">Out-of-Home</span>
               <span class="doc-thumb-cta">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -2530,8 +2531,10 @@ right people at the right moment. <strong>Throughout my career, one of the best 
     });
 
     /* ── Simple popup: openPdf() opens the full campaign book, openImage() the billboard ── */
-    const DOC_PDF   = '/files/GAPFund-CampaignBook-2021.pdf';
-    const DOC_IMAGE = '/photos/Ortho-HRA-billboard.jpeg';
+    const DOC_PDF   = '/photos/GAPFund-CampaignBook-2021.pdf';
+    // NOTE: browsers cannot display .DNG (camera raw). Swap this to the .jpeg
+    // version of the same photo and the billboard will render.
+    const DOC_IMAGE = '/photos/Ortho-HRA-billboard.DNG';
 
     const docModal = document.getElementById('docModal');
     const docFrame = document.getElementById('docFrame');
