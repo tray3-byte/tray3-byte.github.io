@@ -980,51 +980,31 @@
     .doc-thumb:hover .doc-thumb-cta, .doc-thumb:focus-visible .doc-thumb-cta { opacity: 1; }
     .doc-thumb-cta svg { width: 15px; height: 15px; }
 
-    /* ─── DOCUMENT LIGHTBOX ─────────────────────────────────────── */
+    /* ─── SIMPLE POPUP (PDF + image) ────────────────────────────── */
     .doc-modal {
       display: none; position: fixed; inset: 0; z-index: 10001;
       background: rgba(8,11,18,.97); backdrop-filter: blur(12px);
-      align-items: center; justify-content: center; padding: 1rem;
+      align-items: center; justify-content: center; padding: 3rem 1rem 1rem;
     }
     .doc-modal.open { display: flex; }
-    .doc-modal-inner { position: relative; width: 100%; max-width: 1000px; }
-    .doc-modal-bar {
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem; margin-bottom: .75rem; flex-wrap: wrap;
-    }
-    .doc-modal-title {
-      font-family: var(--font-mono); font-size: .66rem;
-      letter-spacing: .14em; text-transform: uppercase; color: var(--cyan);
-    }
-    .doc-modal-btn {
-      background: none; border: none; cursor: pointer; padding: 0;
-      display: inline-flex; align-items: center; gap: .4rem;
-      font-family: var(--font-mono); font-size: .66rem;
-      letter-spacing: .1em; text-transform: uppercase;
-      color: var(--muted2); transition: color .2s;
-    }
-    .doc-modal-btn:hover { color: var(--white); }
-    .doc-modal-btn svg { width: 13px; height: 13px; }
     .doc-stage {
-      position: relative; background: var(--bg3);
-      border: 1px solid var(--border); border-radius: var(--r2);
-      overflow: hidden; display: flex; align-items: center; justify-content: center;
-      height: min(80vh, 1000px);
+      position: relative; width: 100%; max-width: 1000px; height: 100%;
+      background: var(--bg3); border: 1px solid var(--border);
+      border-radius: var(--r2); overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
     }
     .doc-stage img { width: 100%; height: 100%; object-fit: contain; background: var(--bg3); }
     .doc-stage iframe { width: 100%; height: 100%; border: none; background: var(--bg3); }
-    .doc-caption {
-      display: block; margin-top: .8rem; padding: 0 .25rem;
-      font-family: var(--font-mono); font-size: .64rem;
-      letter-spacing: .06em; color: var(--muted);
+    .doc-close {
+      position: absolute; top: 1rem; right: 1rem; z-index: 2;
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(13,17,23,.9); border: 1px solid var(--border2);
+      color: var(--text); cursor: pointer; padding: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: color .2s, border-color .2s;
     }
-    /* Fallback link — some mobile browsers won't render a PDF inline.
-       Delete this rule and its markup if you don't want the fallback. */
-    .doc-fallback { color: var(--cyan); }
-    @media (max-width: 540px) {
-      .doc-stage { height: 68vh; }
-      .doc-modal-bar { gap: .5rem; }
-    }
+    .doc-close:hover { color: var(--cyan); border-color: var(--cyan); }
+    .doc-close svg { width: 16px; height: 16px; }
 
     /* ─── RESPONSIVE ─────────────────────────────────────────────── */
     @media (max-width: 1000px) {
@@ -1813,8 +1793,8 @@ right people at the right moment. <strong>Throughout my career, one of the best 
 
           <!-- GAP FUND CAMPAIGN BOOK -->
           <div class="card">
-            <button class="doc-thumb" onclick="openPdf(/photos/GAPFund-CampaignBook-2021.pdf)" aria-label="Open the GAP Fund campaign book">
-              <img src="/photos/GAPFund-CampaignBook-2021.png" alt="GAP Fund Campaign book cover for West Georgia Technical College" loading="lazy">
+            <button class="doc-thumb" onclick="openPdf()" aria-label="Open the GAP Fund campaign book">
+              <img src="/photos/GAPFund-cover.jpg" alt="GAP Fund Campaign book cover for West Georgia Technical College" loading="lazy">
               <span class="card-type-badge">Campaign Book</span>
               <span class="doc-thumb-cta">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
@@ -1823,7 +1803,7 @@ right people at the right moment. <strong>Throughout my career, one of the best 
             </button>
             <div class="card-body">
               <h3 class="card-title">GAP Fund Campaign — West Georgia Technical College</h3>
-              <p class="card-desc">I wrote a multi-channel fundraising campaign for the West Georgia Technical College Foundation's Gap Funding Program, which keeps students enrolled when unpaid fees would otherwise drop them from class.</p>
+              <p class="card-desc">I developed and wrote a multi-channel fundraising campaign for the West Georgia Technical College Foundation's Gap Funding Program, which keeps students enrolled when unpaid fees would otherwise drop them from class. The campaign book pairs long-form web copy with three tiers of paid social creative — small, mid and major gifts — plus a printed rack card, so every ask matched what a donor was actually being asked to give.</p>
               <div class="card-tags">
                 <span class="tag">Campaign Development</span>
                 <span class="tag">Copywriting</span>
@@ -1832,7 +1812,7 @@ right people at the right moment. <strong>Throughout my career, one of the best 
                 <span class="tag">Fundraising</span>
               </div>
               <div class="card-footer">
-                <button class="card-link" onclick="openPdf(/photos/GAPFund-CampaignBook-2021.png)" style="background:none;border:none;cursor:pointer;padding:0;">
+                <button class="card-link" onclick="openPdf()" style="background:none;border:none;cursor:pointer;padding:0;">
                   View Campaign Book
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 1h5l3 3v7H2z"/><path d="M7 1v3h3"/></svg>
                 </button>
@@ -1842,8 +1822,8 @@ right people at the right moment. <strong>Throughout my career, one of the best 
 
           <!-- ORTHO BILLBOARD -->
           <div class="card">
-            <button class="doc-thumb" onclick="openImage(/photos/Ortho-HRA-billboard.DNG)" aria-label="View the Tanner Ortho and Spine billboard larger">
-              <img src="/photos/Ortho-HRA-billboard.DNG" alt="Digital billboard for Tanner Ortho and Spine Center reading Learn how to move past joint pain" loading="lazy" style="object-position:center;">
+            <button class="doc-thumb" onclick="openImage()" aria-label="View the Tanner Ortho and Spine billboard larger">
+              <img src="/photos/Ortho-HRA-billboard.jpeg" alt="Digital billboard for Tanner Ortho and Spine Center reading Learn how to move past joint pain" loading="lazy" style="object-position:center;">
               <span class="card-type-badge">Out-of-Home</span>
               <span class="doc-thumb-cta">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -1852,7 +1832,7 @@ right people at the right moment. <strong>Throughout my career, one of the best 
             </button>
             <div class="card-body">
               <h3 class="card-title">Move Past Joint Pain — Tanner Ortho and Spine Center</h3>
-              <p class="card-desc">I wrote the copy for this digital billboard promoting Tanner Ortho and Spine Center's online joint pain assessment.</p>
+              <p class="card-desc">I wrote the copy for this digital billboard promoting Tanner Ortho and Spine Center's online joint pain assessment. The headline had to do two things in the few seconds a driver has: name the problem in the reader's own words and point them somewhere specific, so the board carries a short vanity URL straight to the assessment rather than a general service page.</p>
               <div class="card-tags">
                 <span class="tag">Out-of-Home</span>
                 <span class="tag">Copywriting</span>
@@ -1860,7 +1840,7 @@ right people at the right moment. <strong>Throughout my career, one of the best 
                 <span class="tag">Campaign Development</span>
               </div>
               <div class="card-footer">
-                <button class="card-link" onclick="openImage(/photos/Ortho-HRA-billboard.DNG)" style="background:none;border:none;cursor:pointer;padding:0;">
+                <button class="card-link" onclick="openImage()" style="background:none;border:none;cursor:pointer;padding:0;">
                   View Billboard
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="5" r="3.5"/><path d="M11 11L7.6 7.6"/></svg>
                 </button>
@@ -2357,20 +2337,13 @@ right people at the right moment. <strong>Throughout my career, one of the best 
   </footer>
 
   <!-- ─── DOCUMENT LIGHTBOX (Campaign Book + Billboard) ─────────── -->
-  <div class="doc-modal" id="docModal" role="dialog" aria-modal="true" aria-label="Document viewer">
-    <div class="doc-modal-inner">
-      <div class="doc-modal-bar">
-        <span class="doc-modal-title" id="docModalTitle"></span>
-        <button class="doc-modal-btn" onclick="closeDoc()">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-          Close
-        </button>
-      </div>
-      <div class="doc-stage">
-        <iframe id="docFrame" title="GAP Fund campaign book" style="display:none;"></iframe>
-        <img id="docImage" src="" alt="" style="display:none;">
-      </div>
-      <span class="doc-caption" id="docCaption"></span>
+  <div class="doc-modal" id="docModal" role="dialog" aria-modal="true" aria-label="Viewer">
+    <button class="doc-close" onclick="closeDoc()" aria-label="Close">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="doc-stage">
+      <iframe id="docFrame" title="Campaign book" style="display:none;"></iframe>
+      <img id="docImage" src="" alt="" style="display:none;">
     </div>
   </div>
 
@@ -2556,35 +2529,20 @@ right people at the right moment. <strong>Throughout my career, one of the best 
       scInit(id);
     });
 
-    /* ── Document Lightbox ──
-       openPdf()   → the full GAP Fund campaign book, all pages in one document
-       openImage() → the billboard photo at full size */
+    /* ── Simple popup: openPdf() opens the full campaign book, openImage() the billboard ── */
     const DOC_PDF   = '/files/GAPFund-CampaignBook-2021.pdf';
     const DOC_IMAGE = '/photos/Ortho-HRA-billboard.jpeg';
 
-    const docModal   = document.getElementById('docModal');
-    const docFrame   = document.getElementById('docFrame');
-    const docImage   = document.getElementById('docImage');
-    const docTitle   = document.getElementById('docModalTitle');
-    const docCaption = document.getElementById('docCaption');
+    const docModal = document.getElementById('docModal');
+    const docFrame = document.getElementById('docFrame');
+    const docImage = document.getElementById('docImage');
     let docOpen = false;
-
-    function showDoc() {
-      docModal.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      docOpen = true;
-    }
 
     function openPdf() {
       docImage.style.display = 'none';
       docFrame.src = DOC_PDF;
       docFrame.style.display = 'block';
-      docTitle.textContent = 'GAP Fund Campaign Book — West Georgia Technical College';
-      /* Fallback line — delete these two lines and the .doc-fallback CSS rule
-         if you'd rather show nothing when a browser can't render PDFs inline. */
-      docCaption.innerHTML = 'Scroll to read all seven pages. Not loading? ' +
-        '<a class="doc-fallback" href="' + DOC_PDF + '" target="_blank" rel="noopener">Open in a new tab</a>.';
-      showDoc();
+      openDocModal();
     }
 
     function openImage() {
@@ -2593,9 +2551,13 @@ right people at the right moment. <strong>Throughout my career, one of the best 
       docImage.src = DOC_IMAGE;
       docImage.alt = 'Digital billboard for Tanner Ortho and Spine Center';
       docImage.style.display = 'block';
-      docTitle.textContent = 'Tanner Ortho and Spine Center — Digital Billboard';
-      docCaption.textContent = 'Digital board, Carrollton, GA';
-      showDoc();
+      openDocModal();
+    }
+
+    function openDocModal() {
+      docModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      docOpen = true;
     }
 
     function closeDoc() {
@@ -2605,12 +2567,12 @@ right people at the right moment. <strong>Throughout my career, one of the best 
       docOpen = false;
     }
 
-    // Close on backdrop click
+    // Click outside the document closes it
     docModal.addEventListener('click', function (e) {
       if (e.target === this) closeDoc();
     });
 
-    // Escape closes the viewer
+    // Escape closes it
     document.addEventListener('keydown', function (e) {
       if (docOpen && e.key === 'Escape') closeDoc();
     });
